@@ -1,0 +1,47 @@
+﻿@model List<PharmacyResultDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col"><a href="#" id="sortById">#<i class="fa fa-sort"></i></a></th>
+            <th scope="col"><a href="#" id="sortByName">Eczane İsmi<i class="fa fa-sort"></i></a></th>
+            <th scope="col"><a href="#" id="sortByCity">Şehir<i class="fa fa-sort"></i></a></th>
+            <th scope="col"><a href="#" id="sortByDistrict">İlçe<i class="fa fa-sort"></i></a></th>
+            <th scope="col"><a href="#" id="sortByNumber">Numara<i class="fa fa-sort"></i></a></th>
+            <th scope="col"><a href="#" id="sortByAddress">Adres<i class="fa fa-sort"></i></a></th>
+            <th scope="col"><a href="#" id="sortByRate">Puan<i class="fa fa-sort"></i></a></th>
+            <th scope="col"><a href="#" id="sortByOnDuty">Nöbetçi Mi?<i class="fa fa-sort"></i></a></th>
+            <th scope="col">Detaylar</th>
+            <th scope="col">Güncelle</th>
+            <th scope="col">Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pharmacy in Model)
+        {
+            <tr>
+                <th scope="row">@pharmacy.PharmacyId</th>
+                <td>@pharmacy.Name</td>
+                <td>@pharmacy.City</td>
+                <td>@pharmacy.District</td>
+                <td>@pharmacy.Number</td>
+                <td>@pharmacy.Address</td>
+                <td>@pharmacy.Rate</td>
+                <td>@(pharmacy.IsOnDuty ? "Evet" : "Hayır")</td>
+                <td class="text-center"><a href="~/Admin/AdminPharmacy/PharmacyDetails/@pharmacy.PharmacyId" class="btn btn-primary">Detaylar</a></td>
+                <td class="text-center"><a href="~/Admin/AdminPharmacy/UpdatePharmacy/@pharmacy.PharmacyId" class="btn btn-warning">Güncelle</a></td>
+                <td class="text-center">
+                    <form action="~/Admin/AdminPharmacy/DeletePharmacy/@pharmacy.PharmacyId" method="post">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Eczaneyi silmek istediğinden emin misin?')">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="~/Admin/AdminPharmacy/AddPharmacy" class="btn btn-success">Eczane Ekle</a>

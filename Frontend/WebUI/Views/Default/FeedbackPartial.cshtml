@@ -1,0 +1,37 @@
+﻿@model CreateFeedbackDto
+
+<section class="contact_section layout_padding-bottom">
+    <div class="container">
+        <div class="heading_container">
+            <h2>Öneri ve Şikayetler</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="form_container">
+                    <form method="post" asp-action="FeedbackPartial" asp-controller="Default">
+                        <div>
+                            <input type="text" placeholder="Adınız" asp-for="SenderName"/>
+                        </div>
+                        <div>
+                            <input type="email" placeholder="Mail Adresiniz" asp-for="SenderMail"/>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Konu" asp-for="Topic"/>
+                        </div>
+                        <div>
+                            <input type="text" class="message-box" placeholder="Mesajınız" asp-for="Content"/>
+                        </div>
+                        <div class="btn_box" type="submit">
+                            <button>Gönder</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="img-box">
+                    <img src="~/mico-html/images/contact-img.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

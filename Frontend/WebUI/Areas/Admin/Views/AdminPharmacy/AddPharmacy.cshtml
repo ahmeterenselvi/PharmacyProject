@@ -1,0 +1,42 @@
+﻿@model CreatePharmacyDto
+
+@{
+    ViewData["Title"] = "AddPharmacy";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<form asp-area="Admin" asp-controller="AdminPharmacy" asp-action="AddPharmacy" method="post" class="form-group form-horizontal">
+    <div class="form-group row">
+        <label for="Name" class="col-sm-2 col-form-label">Eczane Adı:</label>
+        <input type="text" class="form-control col-sm-10" asp-for="Name">
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group row">
+        <label for="City" class="col-sm-2 col-form-label">Şehir:</label>
+        <input type="text" class="form-control col-sm-10" asp-for="City">
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group row">
+        <label for="District" class="col-sm-2 col-form-label">İlçe:</label>
+        <input type="text" class="form-control col-sm-10" asp-for="District">
+        <span asp-validation-for="District" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group row">
+        <label for="Number" class="col-sm-2 col-form-label">Telefon Numarası:</label>
+        <input type="text" class="form-control col-sm-10" asp-for="Number">
+        <span asp-validation-for="Number" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group row">
+        <label for="Address" class="col-sm-2 col-form-label">Adres:</label>
+        <input type="text" class="form-control col-sm-10" asp-for="Address">
+        <span asp-validation-for="Address" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>
+
+<a href="~/Admin/AdminPharmacy/Index" class="btn btn-outline-primary">Geri</a>

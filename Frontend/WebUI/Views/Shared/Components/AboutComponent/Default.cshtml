@@ -1,0 +1,30 @@
+﻿@model IEnumerable<AboutResultDto>
+
+@{
+    Layout = null;
+}
+
+<section class="about_section">
+    <div class="container  ">
+        @foreach (var about in Model)
+        {
+            <div class="row">
+                <div class="col-md-6 ">
+                    <div class="img-box">
+                        <img src="@about.Image" alt="">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="detail-box">
+                        <div class="heading_container">
+                            <h2>@about.Title</h2>
+                        </div>
+                        <p>@about.Description</p>
+                        <a href="">Read More</a>
+                    </div>
+                </div>
+            </div>
+            break;
+        }
+    </div>
+</section>

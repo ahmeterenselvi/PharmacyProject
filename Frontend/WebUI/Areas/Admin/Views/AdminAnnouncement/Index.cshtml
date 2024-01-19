@@ -1,0 +1,39 @@
+﻿@model IEnumerable<AnnouncementResultDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Duyuru Başlığı</th>
+            <th scope="col">Duyuru Özeti</th>
+            <th scope="col">Duyuru Tarihi</th>
+            <th scope="col">Detaylar</th>
+            <th scope="col">Güncelle</th>
+            <th scope="col">Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var announcement in Model.OrderByDescending(x=>x.Date))
+        {
+            <tr>
+                <th scope="row">@announcement.AnnouncementId</th>
+                <td>@announcement.Title</td>
+                <td>@announcement.Summary</td>
+                <td>@announcement.Date</td>
+                <td class="text-center"><a href="~/Admin/AdminAnnouncement/AnnouncementDetails/@announcement.AnnouncementId" class="btn btn-primary">Detaylar</a></td>
+                <td class="text-center"><a href="~/Admin/AdminAnnouncement/UpdateAnnouncement/@announcement.AnnouncementId" class="btn btn-warning">Güncelle</a></td>
+                <td class="text-center">
+                    <form action="~/Admin/AdminAnnouncement/DeleteAnnouncement/@announcement.AnnouncementId" method="post">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Duyuruyu silmek istediğinden emin misin?')">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="~/Admin/AdminAnnouncement/AddAnnouncement" class="btn btn-success">Duyuru Ekle</a>

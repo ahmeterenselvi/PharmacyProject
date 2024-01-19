@@ -1,0 +1,28 @@
+﻿@model PharmacyResultDto
+
+<section class="book_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form method="post" asp-action="PharmaciesOnDutyListPartial" asp-controller="Default">
+                    <h4>
+                        NÖBETÇİ <span>ECZANELER</span>
+                    </h4>
+                    <div class="form-row ">
+                        <div class="form-group col-lg-4">
+                            <label for="inputPatientName">Şehir</label>
+                            <input asp-for="City" type="text" class="form-control" id="inputPatientName" placeholder="Şehir">
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label for="inputPatientName">İlçe</label>
+                            <input asp-for="District" type="text" class="form-control" id="inputPatientName" placeholder="İlçe">
+                        </div>
+                    </div>
+                    <div class="btn-box">
+                        <button type="submit" class="btn">Ara</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

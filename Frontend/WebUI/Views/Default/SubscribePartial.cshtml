@@ -1,0 +1,15 @@
+﻿@model CreateSubscribeDto
+
+<div class="info_top">
+    <div class="info_logo">
+        <a href="">
+            <img src="~/mico-html/images/logo.png" alt="">
+        </a>
+    </div>
+    <div class="info_form">
+        <form method="post" asp-action="SubscribePartial" asp-controller="Default">
+            <input type="email" placeholder="Bültenimize abone olmak için mail adresinizi giriniz." asp-for="Mail">
+            <button type="submit">Abone Ol</button>
+        </form>
+    </div>
+</div>

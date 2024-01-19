@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+@await Html.PartialAsync("HeadPartial")
+
+<body>
+
+    <div class="hero_area">
+        <header class="header_section">
+            @await Html.PartialAsync("TopHeaderPartial")
+            @await Html.PartialAsync("NavbarPartial")
+        </header>
+        @await Component.InvokeAsync("AnnouncementsListComponent")
+    </div>
+
+    @await Html.PartialAsync("PharmaciesOnDutyListPartial")
+    @*@await Component.InvokeAsync("PharmaciesOnDutyListComponent")*@
+
+    @await Component.InvokeAsync("AboutComponent")
+
+    @await Component.InvokeAsync("DrugTipsComponent")
+
+    @await Component.InvokeAsync("HighlyRatedPharmaciesComponent")
+
+    @await Component.InvokeAsync("DailyQuoteComponent")
+
+    @await Html.PartialAsync("FeedbackPartial")
+
+    <section class="info_section ">
+        <div class="container">
+            @await Html.PartialAsync("SubscribePartial")
+            @await Html.PartialAsync("FooterPartial")
+        </div>
+    </section>
+
+    @await Html.PartialAsync("ScriptsPartial")
+
+</body>
+
+</html>

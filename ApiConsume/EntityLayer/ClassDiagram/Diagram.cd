@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EntityLayer.Concrete.About">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAEAAAAAAAAAAEAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Concrete\About.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EntityLayer.Concrete.Announcement">
+    <Position X="4.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAgAEAAAAAAAAAAAAIAABABAAAAAAAAAAA=</HashCode>
+      <FileName>Concrete\Announcement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EntityLayer.Concrete.DailyQuote">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAgAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Concrete\DailyQuote.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EntityLayer.Concrete.DrugTip">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAUAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Concrete\DrugTip.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EntityLayer.Concrete.Feedback">
+    <Position X="2.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAIAIAAAAAAAAABAAAAACAgAAA=</HashCode>
+      <FileName>Concrete\Feedback.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EntityLayer.Concrete.Pharmacy">
+    <Position X="4.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAAAAQAAAAAAAAAIAEAAAAQACAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Concrete\Pharmacy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EntityLayer.Concrete.Subscribe">
+    <Position X="6.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Concrete\Subscribe.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

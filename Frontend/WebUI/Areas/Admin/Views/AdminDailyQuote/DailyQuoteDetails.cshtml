@@ -1,0 +1,31 @@
+﻿@model DailyQuoteResultDto
+
+@{
+    ViewData["Title"] = "DailyQuoteDetails";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Duyuru Detayları</h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Sözün Kaynağı:</th>
+                        <td>@Model.DailyQuoteSource</td>
+                    </tr>
+                    <tr>
+                        <th>Söz:</th>
+                        <td>@Model.Quote</td>
+                    </tr>
+                    <tr>
+                        <th>Geri</th>
+                        <td><a href="~/Admin/AdminDailyQuote/Index" class="btn btn-outline-primary">Geri</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

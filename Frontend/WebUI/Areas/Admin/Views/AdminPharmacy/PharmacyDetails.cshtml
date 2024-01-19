@@ -1,0 +1,55 @@
+﻿@model PharmacyResultDto
+
+@{
+    ViewData["Title"] = "PharmacyDetails";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Eczane Detayları</h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Eczane Adı:</th>
+                        <td>@Model.Name</td>
+                    </tr>
+                    <tr>
+                        <th>Şehir:</th>
+                        <td>@Model.City</td>
+                    </tr>
+                    <tr>
+                        <th>İlçe:</th>
+                        <td>@Model.District</td>
+                    </tr>
+                    <tr>
+                        <th>Numara:</th>
+                        <td>@Model.Number</td>
+                    </tr>
+                    <tr>
+                        <th>Adres:</th>
+                        <td>@Model.Address</td>
+                    </tr>
+                    <tr>
+                        <th>Status:</th>
+                        <td>
+                            <label class="badge @(Model.IsOnDuty ? "badge-success" : "badge-danger")">
+                                @(Model.IsOnDuty ? "Evet" : "Hayır")
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Puan:</th>
+                        <td>@Model.Rate</td>
+                    </tr>
+                    <tr>
+                        <th>Geri</th>
+                        <td><a href="~/Admin/AdminPharmacy/Index" class="btn btn-outline-primary">Geri</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

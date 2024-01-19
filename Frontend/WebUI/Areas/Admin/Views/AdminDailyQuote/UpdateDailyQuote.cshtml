@@ -1,0 +1,26 @@
+﻿@model UpdateDailyQuoteDto
+
+@{
+    ViewData["Title"] = "UpdateDailyQuote";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<form asp-controller="AdminDailyQuote" asp-action="UpdateDailyQuote" method="post" class="form-group form-horizontal">
+    <input type="hidden" asp-for="DailyQuoteId"/>
+    <div class="form-group row">
+        <label for="DailyQuoteSource" class="col-sm-2 col-form-label">Söz Kaynağı:</label>
+        <input type="text" class="form-control col-sm-10" asp-for="DailyQuoteSource">
+        <span asp-validation-for="DailyQuoteSource" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group row">
+        <label for="Quote" class="col-sm-2 col-form-label">Söz:</label>
+        <input type="text" class="form-control col-sm-10" asp-for="Quote">
+        <span asp-validation-for="Quote" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>
+
+<a href="~/Admin/AdminDailyQuote/Index" class="btn btn-outline-primary">Geri</a>
+

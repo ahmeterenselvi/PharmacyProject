@@ -1,0 +1,37 @@
+﻿@model IEnumerable<DailyQuoteResultDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Söz Kaynağı</th>
+            <th scope="col">Söz</th>
+            <th scope="col">Detaylar</th>
+            <th scope="col">Güncelle</th>
+            <th scope="col">Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var dailyQuote in Model)
+        {
+            <tr>
+                <th scope="row">@dailyQuote.DailyQuoteId</th>
+                <td>@dailyQuote.DailyQuoteSource</td>
+                <td>@dailyQuote.Quote</td>
+                <td class="text-center"><a href="~/Admin/AdminDailyQuote/DailyQuoteDetails/@dailyQuote.DailyQuoteId" class="btn btn-primary">Detaylar</a></td>
+                <td class="text-center"><a href="~/Admin/AdminDailyQuote/UpdateDailyQuote/@dailyQuote.DailyQuoteId" class="btn btn-warning">Güncelle</a></td>
+                <td class="text-center">
+                    <form action="~/Admin/AdminDailyQuote/DeleteDailyQuote/@dailyQuote.DailyQuoteId" method="post">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Sözü silmek istediğinden emin misin?')">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="~/Admin/AdminDailyQuote/AddDailyQuote" class="btn btn-success">Söz Ekle</a>

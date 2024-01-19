@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SubscribeResultDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col"><a href="#" id="sortById">#<i class="fa fa-sort"></i></a></th>
+            <th scope="col"><a href="#" id="sortByName">Abone Mail<i class="fa fa-sort"></i></a></th>
+            <th scope="col">Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var subscribe in Model)
+        {
+            <tr>
+                <th scope="row">@subscribe.SubscribeId</th>
+                <td>@subscribe.Mail</td>
+                <td class="text-center">
+                    <form action="~/Admin/AdminSubscribe/DeleteSubscribe/@subscribe.SubscribeId" method="post">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Aboneyi silmek istediğinden emin misin?')">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<form action="~/Admin/AdminSubscribe/SendMail" method="post">
+    <button type="submit" class="btn btn-success" onclick="return confirm('Mail göndermek istediğinden emin misin?')">Mail Gönder</button>
+</form>

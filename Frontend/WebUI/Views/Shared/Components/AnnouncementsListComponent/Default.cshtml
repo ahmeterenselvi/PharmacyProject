@@ -1,0 +1,86 @@
+﻿@model IEnumerable<AnnouncementResultDto>
+@{
+    Layout = null;
+}
+
+@{
+    var announcementWithId1 = Model.FirstOrDefault(id => id.AnnouncementId == 1);
+}
+
+<section class="slider_section">
+    <div class="dot_design">
+        <img src="~/mico-html/images/dots.png" alt="">
+    </div>
+    <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            @if (announcementWithId1 != null)
+            {
+                <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-box">
+                                    <div class="play_btn">
+                                        <button>
+                                            <i class="fa fa-play" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                    <h1>@announcementWithId1.Title</h1>
+                                    <p>@announcementWithId1.Summary</p>
+                                    <a href="#">
+                                        Detaylar
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="img-box">
+                                    <img src="@announcementWithId1.Image" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            @foreach (var announcement in Model.Where(id => id.AnnouncementId != 1))
+            {
+                <div class="carousel-item">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="detail-box">
+                                    <div class="play_btn">
+                                        <button>
+                                            <i class="fa fa-play" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                    <h1>@announcement.Title</h1>
+                                    <p>@announcement.Summary</p>
+                                    <a href="#">
+                                        Detaylar
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="img-box">
+                                    <img src="@announcement.Image" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="carousel_btn-box">
+            <a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
+                <img src="~/mico-html/images/prev.png" alt="">
+                <span class="sr-only">Önceki</span>
+            </a>
+            <a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">
+                <img src="~/mico-html/images/next.png" alt="">
+                <span class="sr-only">Sonraki</span>
+            </a>
+        </div>
+    </div>
+</section>

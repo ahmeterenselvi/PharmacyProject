@@ -1,0 +1,30 @@
+﻿@model UpdateAboutDto
+
+@{
+    ViewData["Title"] = "UpdateAbout";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<form asp-controller="AdminAbout" asp-action="UpdateAbout" method="post" class="form-group form-horizontal">
+    <input type="hidden" asp-for="AboutId">
+    <div class="form-group row">
+        <label for="Title" class="col-sm-2 col-form-label">Hakkında Başlığı</label>
+        <input type="text" class="form-control col-sm-10" asp-for="Title">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group row">
+        <label for="Description" class="col-sm-2 col-form-label">Hakkında Açıklaması</label>
+        <input type="text" class="form-control col-sm-10" asp-for="Description">
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group row">
+        <label for="Image" class="col-sm-2 col-form-label">Hakkında Resmi</label>
+        <input type="text" class="form-control col-sm-10" asp-for="Image">
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>
+<a href="~/Admin/AdminAbout/Index" class="btn btn-light">Geri Dön</a>

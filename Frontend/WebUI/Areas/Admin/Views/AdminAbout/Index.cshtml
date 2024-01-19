@@ -1,0 +1,31 @@
+﻿@model List<AboutResultDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Hakkında Başlığı</th>
+            <th scope="col">Hakkında Açıklaması</th>
+            <th scope="col">Hakkında Resmi</th>
+            <th scope="col">Güncelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var about in Model)
+        {
+            <tr>
+                <th scope="row">@about.AboutId</th>
+                <td>@about.Title</td>
+                <td>@about.Description</td>
+                <td>@about.Image</td>
+                <td class="text-center"><a href="~/Admin/AdminAbout/UpdateAbout/@about.AboutId" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

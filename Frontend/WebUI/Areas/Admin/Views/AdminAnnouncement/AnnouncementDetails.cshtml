@@ -1,0 +1,42 @@
+﻿@model AnnouncementResultDto
+
+@{
+    ViewData["Title"] = "AnnouncementDetails";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Duyuru Detayları</h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Duyuru Başlığı:</th>
+                        <td>@Model.Title</td>
+                    </tr>
+                    <tr>
+                        <th>Duyuru Özeti:</th>
+                        <td>@Model.Summary</td>
+                    </tr>
+                    <tr>
+                        <th>Duyuru Açıklaması:</th>
+                        <td>@Model.Description</td>
+                    </tr>
+                    <tr>
+                        <th>Duyuru Tarihi:</th>
+                        <td>@Model.Date</td>
+                    </tr>
+                    <tr>
+                        <th>Duyuru Resmi:</th>
+                        <td>@Model.Image</td>
+                    </tr>
+                    <tr>
+                        <th>Geri</th>
+                        <td><a href="~/Admin/AdminAnnouncement/Index" class="btn btn-outline-primary">Geri</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

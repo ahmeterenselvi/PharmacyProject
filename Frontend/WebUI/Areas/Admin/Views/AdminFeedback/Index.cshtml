@@ -1,0 +1,34 @@
+﻿@model IEnumerable<FeedbackResultDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<table class="table table-hover table-bordered">
+    <thead>
+        <tr>
+            <th scope="col"><a href="#" id="sortById">#<i class="fa fa-sort"></i></a></th>
+            <th scope="col"><a href="#" id="sortByName">Gönderen Mail<i class="fa fa-sort"></i></a></th>
+            <th scope="col"><a href="#" id="sortByCity">Konu<i class="fa fa-sort"></i></a></th>
+            <th scope="col">Detaylar</th>
+            <th scope="col">Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var feedback in Model.OrderByDescending(date=>date.Date))
+        {
+            <tr>
+                <th scope="row">@feedback.FeedbackId</th>
+                <td>@feedback.SenderMail</td>
+                <td>@feedback.Topic</td>
+                <td class="text-center"><a href="~/Admin/AdminFeedback/FeedbackDetails/@feedback.FeedbackId" class="btn btn-primary">Detaylar</a></td>
+                <td class="text-center">
+                    <form action="~/Admin/AdminFeedback/DeleteFeedback/@feedback.FeedbackId" method="post">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Geri bildirimi silmek istediğinden emin misin?')">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,43 @@
+﻿@model FeedbackResultDto
+
+@{
+    ViewData["Title"] = "FeedbackDetails";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Geri Dönüş Detayları</h4>
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Gönderen Adı:</th>
+                        <td>@Model.SenderName</td>
+                    </tr>
+                    <tr>
+                        <th>Gönderen Mail:</th>
+                        <td>@Model.SenderMail</td>
+                    </tr>
+                    <tr>
+                        <th>Konu:</th>
+                        <td>@Model.Topic</td>
+                    </tr>
+                    <tr>
+                        <th>İçerik:</th>
+                        <td>@Model.Content</td>
+                    </tr>
+                    <tr>
+                        <th>Tarih:</th>
+                        <td>@Model.Date</td>
+                    </tr>
+                    <tr>
+                        <th>Geri</th>
+                        <td><a href="~/Admin/AdminFeedback/Index" class="btn btn-outline-primary">Geri</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

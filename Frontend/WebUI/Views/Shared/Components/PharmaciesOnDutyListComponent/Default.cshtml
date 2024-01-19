@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CitiesandDistrictsResultDto>
+
+<!-- Görünüm -->
+<form>
+    <label for="city">Şehir:</label>
+    <select id="city" name="city" onchange="getDistricts(this)">
+        <option value="">Şehir seçin</option>
+        @foreach (var city in Model)
+        {
+            <option value="@city.City">@city.City</option>
+        }
+    </select>
+
+    <label for="district">İlçe:</label>
+    <select id="district" name="district">
+        <option value="">İlçe seçin</option>
+    </select>
+</form>
+
+<script>
+    function getDistricts(select) {
+        var selectedCity = select.value;
+        var citiesAndDistricts = @Html.Raw(Json.Serialize(ViewBag.CitiesAndDistricts));
+        var districts = [];
+
+        for (var i = 0; i < citiesAndDistricts.length; i++) {
+            if (citiesAndDistricts[i].City === selectedCity) {
+                districts = citiesAndDistricts[i].Districts;
+                break;
+            }
+        }
+
+        var districtDropdown = document.getElementById('district');
+        districtDropdown.innerHTML = '<option value="">İlçe seçin</option>';
+
+        for (var i = 0; i < districts.length; i++) {
+            var option = document.createElement('option');
+            option.value = districts[i];
+            option.text = districts[i];
+            districtDropdown.appendChild(option);
+        }
+    }
+</script>

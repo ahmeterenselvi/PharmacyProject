@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@await Html.PartialAsync("~/Areas/admin/Views/Admin/HeadPartial.cshtml")
+<body>
+    @await Html.PartialAsync("~/Areas/admin/Views/Admin/PreloaderPartial.cshtml")
+    <div id="main-wrapper">
+        @await Html.PartialAsync("~/Areas/admin/Views/Admin/NavheaderPartial.cshtml")
+        @await Html.PartialAsync("~/Areas/admin/Views/Admin/HeaderPartial.cshtml")
+        @await Html.PartialAsync("~/Areas/admin/Views/Admin/SidebarPartial.cshtml")
+        <div class="content-body">
+
+            <div class="row page-titles mx-0">
+                <div class="col p-md-0">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- row -->
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- #/ container -->
+        </div>
+        @await Html.PartialAsync("~/Areas/admin/Views/Admin/FooterPartial.cshtml")
+    </div>
+    @await Html.PartialAsync("~/Areas/admin/Views/Admin/ScriptPartial.cshtml")
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿@model CreateAnnouncementDto
+
+@{
+    ViewData["Title"] = "AddAnnouncement";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<form asp-controller="AdminAnnouncement" asp-action="AddAnnouncement" method="post" class="form-group form-horizontal">
+    <div class="form-group row">
+        <label for="Title" class="col-sm-2 col-form-label">Duyuru Başlığı:</label>
+        <input type="text" class="form-control col-sm-10" asp-for="Title">
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group row">
+        <label for="Summary" class="col-sm-2 col-form-label">Duyuru Özeti:</label>
+        <input type="text" class="form-control col-sm-10" asp-for="Summary">
+        <span asp-validation-for="Summary" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group row">
+        <label for="Description" class="col-sm-2 col-form-label">Duyuru Açıklaması:</label>
+        <input type="text" class="form-control col-sm-10" asp-for="Description">
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <br />
+    <div class="form-group row">
+        <label for="Image" class="col-sm-2 col-form-label">Duyuru Resmi:</label>
+        <input type="text" class="form-control col-sm-10" asp-for="Image">
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>
+
+<a href="~/Admin/AdminAnnouncement/Index" class="btn btn-outline-primary">Geri</a>

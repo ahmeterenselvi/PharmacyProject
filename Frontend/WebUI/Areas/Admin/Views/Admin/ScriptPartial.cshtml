@@ -1,0 +1,53 @@
+﻿<script src="~/adminweb/plugins/common/common.min.js"></script>
+<script src="~/adminweb/js/custom.min.js"></script>
+<script src="~/adminweb/js/settings.js"></script>
+<script src="~/adminweb/js/gleek.js"></script>
+<script src="~/adminweb/js/styleSwitcher.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var ascending = false;
+        var currentSortColumn = null;
+
+        function sortTable(columnIndex) {
+            var rows = $('tbody > tr').get();
+
+            rows.sort(function (a, b) {
+                var textA = $(a).find('td:nth-child(' + (columnIndex + 1) + ')').text();
+                var textB = $(b).find('td:nth-child(' + (columnIndex + 1) + ')').text();
+
+                if (currentSortColumn == columnIndex && !ascending) {
+                    [textA, textB] = [textB, textA]; // Reverse order for descending
+                }
+
+                // Use numerical comparison for numbers, localeCompare for text
+                if (!isNaN(textA) && !isNaN(textB)) {
+                    return parseFloat(textA) - parseFloat(textB);
+                } else {
+                    return textA.localeCompare(textB, 'tr', { sensitivity: 'base' });
+                }
+            });
+
+            $.each(rows, function (index, row) {
+                $('tbody').append(row);
+            });
+
+            ascending = !ascending;
+            currentSortColumn = columnIndex;
+        }
+
+        // Attach click events to all column headers
+        $('th a').click(function () {
+            var columnIndex = $(this).parent().index();
+            sortTable(columnIndex);
+
+            // Change the icon to reflect the current sorting order
+            var icon = $(this).find('i');
+            if (ascending) {
+                icon.removeClass('fa-sort-down').addClass('fa-sort-up');
+            } else {
+                icon.removeClass('fa-sort-up').addClass('fa-sort-down');
+            }
+        });
+    });
+</script>
