@@ -3,6 +3,7 @@ using BusinessLayer.Abstract;
 using DtoLayer.PharmacyDto;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 
 namespace WebApi.Controllers
 {
@@ -20,9 +21,10 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
+        [EnableQuery]
         public IActionResult GetAllPharmacys()
         {
-            var pharmacyList = _pharmacyService.TGetAll();
+            var pharmacyList = _pharmacyService.TGetAllPharmaciesQueryable();
             return Ok(pharmacyList);
         }
 

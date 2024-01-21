@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IPharmacyService:IGenericService<Pharmacy>
     {
+        IQueryable<Pharmacy> TGetAllPharmaciesQueryable();
     }
 }

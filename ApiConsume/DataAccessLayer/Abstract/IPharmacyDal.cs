@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface IPharmacyDal:IGenericDal<Pharmacy>
     {
+        IQueryable<Pharmacy> GetAllPharmaciesQueryable();
     }
 }

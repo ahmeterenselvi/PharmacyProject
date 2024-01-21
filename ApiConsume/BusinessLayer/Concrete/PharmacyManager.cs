@@ -18,6 +18,11 @@ namespace BusinessLayer.Concrete
             _pharmacyDal = pharmacyDal;
         }
 
+        public IQueryable<Pharmacy> TGetAllPharmaciesQueryable()
+        {
+            return _pharmacyDal.GetAllPharmaciesQueryable();
+        }
+
         public void TDelete(Pharmacy t)
         {
             _pharmacyDal.Delete(t);

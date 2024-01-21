@@ -12,8 +12,11 @@ namespace EntityLayer.Concrete
         public string Name { get; set; }
         public string City { get; set; }
         public string District { get; set; }
+        public string Directions { get; set; }
         public string Number { get; set; }
         public string Address { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
         public bool IsOnDuty { get; set; }
         public double Rate { get; set; }
     }

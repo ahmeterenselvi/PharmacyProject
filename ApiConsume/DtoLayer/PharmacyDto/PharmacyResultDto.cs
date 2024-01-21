@@ -12,10 +12,12 @@ namespace DtoLayer.PharmacyDto
         public string Name { get; init; }
         public string City { get; init; }
         public string District { get; init; }
+        public string Directions { get; init; }
         public string Number { get; init; }
         public string Address { get; init; }
+        public string Latitude { get; init; }
+        public string Longitude { get; init; }
         public bool IsOnDuty { get; init; }
-
         public double Rate { get; init; }
     }
 }

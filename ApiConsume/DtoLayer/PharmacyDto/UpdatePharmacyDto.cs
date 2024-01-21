@@ -10,6 +10,7 @@ namespace DtoLayer.PharmacyDto
     public record UpdatePharmacyDto
     {
         public int PharmacyId { get; init; }
+
         [Required(ErrorMessage = "İsim alanı gereklidir.")]
         public string Name { get; init; }
 
@@ -19,12 +20,21 @@ namespace DtoLayer.PharmacyDto
         [Required(ErrorMessage = "İlçe alanı gereklidir.")]
         public string District { get; init; }
 
+        public string Directions { get; set; }
+
         [Required(ErrorMessage = "Telefon numarası alanı gereklidir.")]
         [RegularExpression(@"^0 \(\d{3}\) \d{3}-\d{2}-\d{2}$", ErrorMessage = "Geçersiz telefon numarası formatı.")]
         public string Number { get; init; }
 
         [Required(ErrorMessage = "Adres alanı gereklidir.")]
         public string Address { get; init; }
+
+        [Required(ErrorMessage = "Enlem bilgisi gereklidir.")]
+        public string Latitude { get; set; }
+
+        [Required(ErrorMessage = "Boylam bilgisi gereklidir.")]
+        public string Longitude { get; set; }
+
         [Required(ErrorMessage = "Puan alanı gereklidir.")]
         [Range(1, 5, ErrorMessage = "Puan alanı 1 ile 5 arasında olmalıdır.")]
         public double Rate { get; init; }
