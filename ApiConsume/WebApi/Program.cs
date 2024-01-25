@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers()
-    .AddJsonOptions(i=>i.JsonSerializerOptions.ReferenceHandler=ReferenceHandler.Preserve)
+    .AddJsonOptions(i => i.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve)
     .AddOData(conf =>
     {
         conf.EnableQueryFeatures();
@@ -22,7 +22,8 @@ builder.Services.AddScopedEfDals();
 builder.Services.RegisterManagers();
 builder.Services.ConfigureServiceManager();
 builder.Services.AddApiCors();
-builder.Services.AddAutoMapper();
+//builder.Services.AddAutoMapper();
+builder.Services.ConfigureMapping();
 
 var app = builder.Build();
 
