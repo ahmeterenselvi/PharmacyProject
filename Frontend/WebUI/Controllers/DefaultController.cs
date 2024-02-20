@@ -21,17 +21,17 @@ namespace WebUI.Controllers
 
         public IActionResult Index() => View();
 
-        public PartialViewResult HeadPartial() => PartialView();
+        public PartialViewResult _HeadPartial() => PartialView();
 
-        public PartialViewResult TopHeaderPartial() => PartialView();
+        public PartialViewResult _TopHeaderPartial() => PartialView();
 
-        public PartialViewResult NavbarPartial() => PartialView();
+        public PartialViewResult _NavbarPartial() => PartialView();
 
         [HttpGet]
-        public PartialViewResult PharmaciesOnDutyListPartial()=> PartialView();
+        public PartialViewResult _PharmaciesOnDutyListPartial()=> PartialView();
 
         [HttpPost]
-        public IActionResult PharmaciesOnDutyListPartial(CitiesandDistrictsResultDto citiesandDistrictsResultDto)
+        public IActionResult _PharmaciesOnDutyListPartial(CitiesandDistrictsResultDto citiesandDistrictsResultDto)
         {
             if (string.IsNullOrEmpty(citiesandDistrictsResultDto.City) || string.IsNullOrEmpty(citiesandDistrictsResultDto.District))
             {
@@ -46,10 +46,10 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public PartialViewResult FeedbackPartial() => PartialView();
+        public PartialViewResult _FeedbackPartial() => PartialView();
 
         [HttpPost]
-        public async Task<IActionResult> FeedbackPartial(CreateFeedbackDto createFeedbackDto)
+        public async Task<IActionResult> _FeedbackPartial(CreateFeedbackDto createFeedbackDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createFeedbackDto);
@@ -63,10 +63,10 @@ namespace WebUI.Controllers
         }
 
         [HttpGet]
-        public PartialViewResult SubscribePartial() => PartialView();
+        public PartialViewResult _SubscribePartial() => PartialView();
 
         [HttpPost]
-        public async Task<IActionResult> SubscribePartial(CreateSubscribeDto createSubscribeDto)
+        public async Task<IActionResult> _SubscribePartial(CreateSubscribeDto createSubscribeDto)
         {
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createSubscribeDto);
@@ -79,8 +79,8 @@ namespace WebUI.Controllers
             return View();
         }
 
-        public PartialViewResult FooterPartial() => PartialView();
+        public PartialViewResult _FooterPartial() => PartialView();
 
-        public PartialViewResult ScriptsPartial() => PartialView();
+        public PartialViewResult _ScriptsPartial() => PartialView();
     }
 }

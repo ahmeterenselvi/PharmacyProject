@@ -4,13 +4,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
-@await Html.PartialAsync("~/Areas/admin/Views/Admin/HeadPartial.cshtml")
+@await Html.PartialAsync("~/Areas/admin/Views/Admin/_HeadPartial.cshtml")
 <body>
-    @await Html.PartialAsync("~/Areas/admin/Views/Admin/PreloaderPartial.cshtml")
+    @await Html.PartialAsync("~/Areas/admin/Views/Admin/_PreloaderPartial.cshtml")
     <div id="main-wrapper">
-        @await Html.PartialAsync("~/Areas/admin/Views/Admin/NavheaderPartial.cshtml")
-        @await Html.PartialAsync("~/Areas/admin/Views/Admin/HeaderPartial.cshtml")
-        @await Html.PartialAsync("~/Areas/admin/Views/Admin/SidebarPartial.cshtml")
+        @await Html.PartialAsync("~/Areas/admin/Views/Admin/_NavheaderPartial.cshtml")
+        @await Html.PartialAsync("~/Areas/admin/Views/Admin/_HeaderPartial.cshtml")
+        @await Html.PartialAsync("~/Areas/admin/Views/Admin/_SidebarPartial.cshtml")
         <div class="content-body">
 
             <div class="row page-titles mx-0">
@@ -36,8 +36,8 @@
             </div>
             <!-- #/ container -->
         </div>
-        @await Html.PartialAsync("~/Areas/admin/Views/Admin/FooterPartial.cshtml")
+        @await Html.PartialAsync("~/Areas/admin/Views/Admin/_FooterPartial.cshtml")
     </div>
-    @await Html.PartialAsync("~/Areas/admin/Views/Admin/ScriptPartial.cshtml")
+    @await Html.PartialAsync("~/Areas/admin/Views/Admin/_ScriptPartial.cshtml")
 </body>
 </html>

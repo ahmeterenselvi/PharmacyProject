@@ -5,26 +5,28 @@
 <!DOCTYPE html>
 <html>
 
-@await Html.PartialAsync("~/Views/Default/HeadPartial.cshtml")
+@await Html.PartialAsync("~/Views/Default/_HeadPartial.cshtml")
 
 <body>
 
     <div class="hero_area">
         <header class="header_section">
-            @await Html.PartialAsync("~/Views/Default/TopHeaderPartial.cshtml")
-            @await Html.PartialAsync("~/Views/Default/NavbarPartial.cshtml")
+            @await Html.PartialAsync("~/Views/Default/_TopHeaderPartial.cshtml")
+            @await Html.PartialAsync("~/Views/Default/_NavbarPartial.cshtml")
         </header>
+        @await RenderSectionAsync("AnnouncementsListComponent",false)
     </div>
 
     @RenderBody()
 
     <section class="info_section ">
         <div class="container">
-            @await Html.PartialAsync("~/Views/Default/FooterPartial.cshtml")
+            @await RenderSectionAsync("_SubscribePartial", false)
+            @await Html.PartialAsync("~/Views/Default/_FooterPartial.cshtml")
         </div>
     </section>
 
-    @await Html.PartialAsync("~/Views/Default/ScriptsPartial.cshtml")
+    @await Html.PartialAsync("~/Views/Default/_ScriptsPartial.cshtml")
 
 </body>
 

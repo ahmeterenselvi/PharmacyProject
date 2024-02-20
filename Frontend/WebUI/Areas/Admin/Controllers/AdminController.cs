@@ -7,18 +7,18 @@ namespace WebUI.Areas.Admin.Controllers
     {
         public IActionResult Index() => View();
 
-        public IActionResult HeadPartial() => PartialView();
+        public IActionResult _HeadPartial() => PartialView();
 
-        public IActionResult PreloaderPartial() => PartialView();
+        public IActionResult _PreloaderPartial() => PartialView();
 
-        public IActionResult NavheaderPartial() => PartialView();
+        public IActionResult _NavheaderPartial() => PartialView();
 
-        public IActionResult HeaderPartial() => PartialView();
+        public IActionResult _HeaderPartial() => PartialView();
 
-        public IActionResult SidebarPartial() => PartialView();
+        public IActionResult _SidebarPartial() => PartialView();
 
-        public IActionResult FooterPartial() => PartialView();
+        public IActionResult _FooterPartial() => PartialView();
 
-        public IActionResult ScriptPartial() => PartialView();
+        public IActionResult _ScriptPartial() => PartialView();
     }
 }

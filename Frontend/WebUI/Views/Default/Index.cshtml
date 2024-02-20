@@ -1,44 +1,25 @@
 ﻿@{
-    Layout = null;
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/_MainLayout.cshtml";
 }
 
-<!DOCTYPE html>
-<html>
+@section AnnouncementsListComponent {
+    @await Component.InvokeAsync("AnnouncementsListComponent")
+}
 
-@await Html.PartialAsync("HeadPartial")
+@await Html.PartialAsync("_PharmaciesOnDutyListPartial")
+@*@await Component.InvokeAsync("PharmaciesOnDutyListComponent")*@
 
-<body>
+@await Component.InvokeAsync("AboutComponent")
 
-    <div class="hero_area">
-        <header class="header_section">
-            @await Html.PartialAsync("TopHeaderPartial")
-            @await Html.PartialAsync("NavbarPartial")
-        </header>
-        @await Component.InvokeAsync("AnnouncementsListComponent")
-    </div>
+@await Component.InvokeAsync("DrugTipsComponent")
 
-    @await Html.PartialAsync("PharmaciesOnDutyListPartial")
-    @*@await Component.InvokeAsync("PharmaciesOnDutyListComponent")*@
+@await Component.InvokeAsync("HighlyRatedPharmaciesComponent")
 
-    @await Component.InvokeAsync("AboutComponent")
+@await Component.InvokeAsync("DailyQuoteComponent")
 
-    @await Component.InvokeAsync("DrugTipsComponent")
+@await Html.PartialAsync("_FeedbackPartial")
 
-    @await Component.InvokeAsync("HighlyRatedPharmaciesComponent")
-
-    @await Component.InvokeAsync("DailyQuoteComponent")
-
-    @await Html.PartialAsync("FeedbackPartial")
-
-    <section class="info_section ">
-        <div class="container">
-            @await Html.PartialAsync("SubscribePartial")
-            @await Html.PartialAsync("FooterPartial")
-        </div>
-    </section>
-
-    @await Html.PartialAsync("ScriptsPartial")
-
-</body>
-
-</html>
+@section _SubscribePartial {
+    @await Html.PartialAsync("_SubscribePartial")
+}
