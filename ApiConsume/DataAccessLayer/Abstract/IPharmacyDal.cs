@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrete;
+using EntityLayer.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,7 @@ namespace DataAccessLayer.Abstract
     public interface IPharmacyDal:IGenericDal<Pharmacy>
     {
         IQueryable<Pharmacy> GetAllPharmaciesQueryable();
+
+        PagedList<Pharmacy> GetPaginatedPharmacies(PharmacyParameters pharmacyParameters);
     }
 }

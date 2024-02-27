@@ -18,6 +18,11 @@ namespace BusinessLayer.Concrete
             _drugTipDal = drugTipDal;
         }
 
+        public int TCount()
+        {
+            return _drugTipDal.Count();
+        }
+
         public void TDelete(DrugTip t)
         {
             _drugTipDal.Delete(t);

@@ -13,5 +13,6 @@ namespace BusinessLayer.Abstract
         T TInsert(T t);
         void TUpdate(T t);
         void TDelete(T t);
+        int TCount();
     }
 }

@@ -13,5 +13,6 @@ namespace DataAccessLayer.Abstract
         T Insert(T t);
         void Update(T t);
         void Delete(T t);
+        int Count();
     }
 }

@@ -1,23 +1,19 @@
 ﻿@model IEnumerable<AnnouncementResultDto>
 @{
     Layout = null;
-}
 
-@{
-    var announcementWithId1 = Model.FirstOrDefault(id => id.AnnouncementId == 1);
+    var latestAnnouncement = Model.OrderByDescending(a => a.Date).FirstOrDefault();
+    var announcements = Model.OrderByDescending(d => d.Date);
 }
 
 <section class="slider_section">
-    <div class="dot_design">
-        <img src="~/mico-html/images/dots.png" alt="">
-    </div>
     <div id="customCarousel1" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            @if (announcementWithId1 != null)
+            @foreach (var announcement in announcements)
             {
-                <div class="carousel-item active">
+                <div class="carousel-item @(announcement == latestAnnouncement ? "active" : "")" style="background-image: url('@announcement.Image')">
                     <div class="container">
-                        <div class="row">
+                        <div class="row align-items-center">
                             <div class="col-md-6">
                                 <div class="detail-box">
                                     <div class="play_btn">
@@ -25,45 +21,11 @@
                                             <i class="fa fa-play" aria-hidden="true"></i>
                                         </button>
                                     </div>
-                                    <h1>@announcementWithId1.Title</h1>
-                                    <p>@announcementWithId1.Summary</p>
-                                    <a href="#">
-                                        Detaylar
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="img-box">
-                                    <img src="@announcementWithId1.Image" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            }
-
-            @foreach (var announcement in Model.Where(id => id.AnnouncementId != 1))
-            {
-                <div class="carousel-item">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="detail-box">
-                                    <div class="play_btn">
-                                        <button>
-                                            <i class="fa fa-play" aria-hidden="true"></i>
-                                        </button>
+                                    <div class="announcement-info">
+                                        <h1>@announcement.Title</h1>
+                                        <p>@announcement.Summary</p>
+                                        <a href="#" class="detail-link">Detaylar</a>
                                     </div>
-                                    <h1>@announcement.Title</h1>
-                                    <p>@announcement.Summary</p>
-                                    <a href="#">
-                                        Detaylar
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="img-box">
-                                    <img src="@announcement.Image" alt="">
                                 </div>
                             </div>
                         </div>
@@ -84,3 +46,61 @@
         </div>
     </div>
 </section>
+
+<style>
+    .carousel-item {
+        height: 500px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .detail-box {
+        padding: 40px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .play_btn button {
+        background-color: #fff;
+        border: none;
+        padding: 15px;
+        border-radius: 50%;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+    }
+
+        .play_btn button:hover {
+            transform: scale(1.1);
+        }
+
+    .announcement-info h1 {
+        color: #333;
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .announcement-info p {
+        color: #666;
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .detail-link {
+        background-color: #007bff;
+        color: #fff;
+        padding: 15px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        display: inline-block;
+    }
+
+        .detail-link:hover {
+            background-color: #0056b3;
+        }
+</style>
+

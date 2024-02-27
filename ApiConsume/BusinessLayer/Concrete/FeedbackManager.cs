@@ -18,6 +18,11 @@ namespace BusinessLayer.Concrete
             _feedbackDal = feedbackDal;
         }
 
+        public int TCount()
+        {
+            return _feedbackDal.Count();
+        }
+
         public void TDelete(Feedback t)
         {
             _feedbackDal.Delete(t);

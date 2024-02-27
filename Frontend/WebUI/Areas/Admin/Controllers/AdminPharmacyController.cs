@@ -1,4 +1,5 @@
 ﻿using DtoLayer.PharmacyDto;
+using MessagePack.Formatters;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -15,10 +16,13 @@ namespace WebUI.Areas.Admin.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 50)
         {
+            ViewBag.PharmacyCount = await PharmacyCount();
+
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7208/api/Pharmacy");
+            var responseMessage = await client.GetAsync($"https://localhost:7208/api/Pharmacy/GetPaginatedPharmacies?PageNumber={pageNumber}&PageSize={pageSize}");
+
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -96,6 +100,20 @@ namespace WebUI.Areas.Admin.Controllers
                 return View(values);
             }
             return View();
+        }
+
+        public async Task<int> PharmacyCount()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7208/api/Statistics");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<Dictionary<string, int>>(jsonData);
+
+                return values["Pharmacy"];
+            }
+            return 0;
         }
     }
 }

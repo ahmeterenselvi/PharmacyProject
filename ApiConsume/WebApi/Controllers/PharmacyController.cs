@@ -2,8 +2,10 @@
 using BusinessLayer.Abstract;
 using DtoLayer.PharmacyDto;
 using EntityLayer.Concrete;
+using EntityLayer.RequestFeatures;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
+using System.Text.Json;
 
 namespace WebApi.Controllers
 {
@@ -26,6 +28,16 @@ namespace WebApi.Controllers
         {
             var pharmacyList = _pharmacyService.TGetAllPharmaciesQueryable();
             return Ok(pharmacyList);
+        }
+
+        [HttpGet("GetPaginatedPharmacies")]
+        public IActionResult GetPaginatedPharmacies([FromQuery] PharmacyParameters pharmacyParameters)
+        {
+            var pagedResult = _pharmacyService.TGetPaginatedPharmacies(pharmacyParameters);
+
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(pagedResult.metaData));
+
+            return Ok(pagedResult.pharmacies);
         }
 
         [HttpGet("top10highrated")]

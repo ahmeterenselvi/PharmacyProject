@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
+using EntityLayer.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,18 @@ namespace BusinessLayer.Concrete
         public void TUpdate(Pharmacy t)
         {
             _pharmacyDal.Update(t);
+        }
+
+        public (IEnumerable<Pharmacy> pharmacies, MetaData metaData) TGetPaginatedPharmacies(PharmacyParameters pharmacyParameters)
+        {
+            var pharmacies = _pharmacyDal.GetPaginatedPharmacies(pharmacyParameters);
+
+            return (pharmacies, pharmacies.MetaData);
+        }
+
+        public int TCount()
+        {
+            return _pharmacyDal.Count();
         }
     }
 }

@@ -32,7 +32,7 @@ namespace WebUI.Areas.Admin.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "AdminPharmacy", new { area = "Admin" });
+                return RedirectToAction("Index", "AdminDashboard", new { area = "Admin" });
             }
 
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");

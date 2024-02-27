@@ -1,4 +1,5 @@
 ﻿using EntityLayer.Concrete;
+using EntityLayer.RequestFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface IPharmacyService:IGenericService<Pharmacy>
+    public interface IPharmacyService : IGenericService<Pharmacy>
     {
         IQueryable<Pharmacy> TGetAllPharmaciesQueryable();
+
+        (IEnumerable<Pharmacy> pharmacies, MetaData metaData) TGetPaginatedPharmacies(PharmacyParameters pharmacyParameters);
     }
 }

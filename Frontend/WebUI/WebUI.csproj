@@ -25,14 +25,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\ApiConsume\BusinessLayer\BusinessLayer.csproj" />
     <ProjectReference Include="..\..\ApiConsume\DataAccessLayer\DataAccessLayer.csproj" />
     <ProjectReference Include="..\..\ApiConsume\DtoLayer\DtoLayer.csproj" />
     <ProjectReference Include="..\..\ApiConsume\WebApi\WebApi.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
 
 </Project>

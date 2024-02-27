@@ -17,6 +17,11 @@ namespace DataAccessLayer.Repositories
             _context = context;
         }
 
+        public int Count()
+        {
+            return _context.Set<T>().Count();
+        }
+
         public void Delete(T t)
         {
             _context.Remove(t);

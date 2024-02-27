@@ -18,6 +18,11 @@ namespace BusinessLayer.Concrete
             _subscribeDal = subscribeDal;
         }
 
+        public int TCount()
+        {
+            return _subscribeDal.Count();
+        }
+
         public void TDelete(Subscribe t)
         {
             _subscribeDal.Delete(t);

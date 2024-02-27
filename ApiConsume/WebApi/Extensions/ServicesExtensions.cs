@@ -43,7 +43,7 @@ namespace WebApi.Extensions
             {
                 opt.AddPolicy("PharmacyApiCors", opts =>
                 {
-                    opts.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                    opts.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().WithExposedHeaders("X-Pagination");
                 });
             });
         }

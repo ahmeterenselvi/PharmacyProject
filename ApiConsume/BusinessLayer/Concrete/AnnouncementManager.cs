@@ -18,6 +18,11 @@ namespace BusinessLayer.Concrete
             _announcementDal = announcementDal;
         }
 
+        public int TCount()
+        {
+            return _announcementDal.Count();
+        }
+
         public void TDelete(Announcement t)
         {
             _announcementDal.Delete(t);

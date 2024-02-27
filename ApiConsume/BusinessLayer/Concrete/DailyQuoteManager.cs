@@ -18,6 +18,11 @@ namespace BusinessLayer.Concrete
             _dailyQuoteDal = dailyQuoteDal;
         }
 
+        public int TCount()
+        {
+            return _dailyQuoteDal.Count();
+        }
+
         public void TDelete(DailyQuote t)
         {
             _dailyQuoteDal.Delete(t);
