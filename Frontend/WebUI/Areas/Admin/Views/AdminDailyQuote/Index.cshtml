@@ -9,20 +9,22 @@
     <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Söz Kaynağı</th>
             <th scope="col">Söz</th>
+            <th scope="col">Söz Kaynağı</th>
+            <th scope="col">Tarih</th>
             <th scope="col">Detaylar</th>
             <th scope="col">Güncelle</th>
             <th scope="col">Sil</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var dailyQuote in Model)
+        @foreach (var dailyQuote in Model.OrderByDescending(d=>d.Date))
         {
             <tr>
                 <th scope="row">@dailyQuote.DailyQuoteId</th>
-                <td>@dailyQuote.DailyQuoteSource</td>
                 <td>@dailyQuote.Quote</td>
+                <td>@dailyQuote.DailyQuoteSource</td>
+                <td>@dailyQuote.Date</td>
                 <td class="text-center"><a href="~/Admin/AdminDailyQuote/DailyQuoteDetails/@dailyQuote.DailyQuoteId" class="btn btn-primary">Detaylar</a></td>
                 <td class="text-center"><a href="~/Admin/AdminDailyQuote/UpdateDailyQuote/@dailyQuote.DailyQuoteId" class="btn btn-warning">Güncelle</a></td>
                 <td class="text-center">

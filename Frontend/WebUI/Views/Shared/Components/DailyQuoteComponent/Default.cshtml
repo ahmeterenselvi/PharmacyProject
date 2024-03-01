@@ -2,33 +2,30 @@
 
 @{
     Layout = null;
-
-    var latestDailyQuote = Model.FirstOrDefault();
+    var latestDailyQuote = Model.OrderByDescending(d => d.Date).FirstOrDefault();
 }
 
 <section class="client_section layout_padding">
     <div class="container">
         <div class="heading_container">
-            <h2>
-                <span>Günün Sözü</span>
-            </h2>
+            <h2><span>Günün Sözü</span></h2>
         </div>
     </div>
     <div class="container px-0">
-        <div id="customCarousel2" class="carousel  carousel-fade" data-ride="carousel">
+        <div id="customCarousel2" class="carousel carousel-fade" data-ride="carousel">
             <div class="carousel-inner">
-                @foreach (var dailyQuote in Model)
+                @foreach (var dailyQuote in Model.OrderByDescending(d => d.Date))
                 {
-                    <div class="carousel-item @(dailyQuote == latestDailyQuote ? "active" : "")">
+                    <div class="carousel-item@(dailyQuote == latestDailyQuote ? " active" : "")">
                         <div class="box">
                             <div class="client_info">
                                 <div class="client_name">
-                                    <h5>@dailyQuote.DailyQuoteSource</h5>
+                                    <h5>@dailyQuote.Quote</h5>
                                     <h6>@dailyQuote.DailyQuoteSource</h6>
                                 </div>
                                 <i class="fa fa-quote-left" aria-hidden="true"></i>
                             </div>
-                            <p>@dailyQuote.Quote</p>
+                            <p>@dailyQuote.Date.ToString("d MMMM yyyy")</p>
                         </div>
                     </div>
                 }

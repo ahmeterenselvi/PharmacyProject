@@ -1,6 +1,7 @@
 ﻿using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Repositories;
+using DtoLayer.PharmacyDto;
 using EntityLayer.Concrete;
 using EntityLayer.RequestFeatures;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +37,23 @@ namespace DataAccessLayer.EntityFramework
                 .ToPagedList(pharmacies,
                 pharmacyParameters.PageNumber,
                 pharmacyParameters.PageSize);
+        }
+
+        public List<CityPharmacyCountDto> GetTopCitiesWithMostPharmacies()
+        {
+            var citiesPharmacyCount = _context.Pharmacies
+            .GroupBy(p => p.City)
+            .Select(g => new CityPharmacyCountDto
+            {
+                City = g.Key,
+                PharmacyCount = g.Count()
+            })
+            .OrderByDescending(x => x.PharmacyCount)
+            .Take(3)
+            .ToList();
+
+            return citiesPharmacyCount;
+
         }
     }
 }

@@ -11,5 +11,6 @@ namespace DtoLayer.DailyQuote
         public int DailyQuoteId { get; init; }
         public string DailyQuoteSource { get; init; }
         public string Quote { get; init; }
+        public DateTime Date { get; init; }
     }
 }

@@ -17,5 +17,10 @@ namespace DataAccessLayer.EntityFramework
         {
 
         }
+
+        public Subscribe CheckEmailExistence(string mail)
+        {
+            return GetAll().FirstOrDefault(m => m.Mail == mail);
+        }
     }
 }

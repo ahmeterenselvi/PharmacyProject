@@ -38,5 +38,12 @@ namespace WebUI.Areas.Admin.Controllers
             ModelState.AddModelError(string.Empty, "Invalid login attempt.");
             return View(dto);
         }
+
+        public async Task<IActionResult> LogOut()
+        {
+            await _manager.SignOutAsync();
+
+            return RedirectToAction("Index", "AdminLogin", new { area = "Admin" });
+        }
     }
 }

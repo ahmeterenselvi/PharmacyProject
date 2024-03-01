@@ -78,7 +78,6 @@ namespace WebApi.Controllers
 
             if (lastAnnouncement == null)
             {
-                // Handle the case where there is no announcement available
                 return NotFound("Duyuru bulunamadı.");
             }
 
@@ -93,7 +92,7 @@ namespace WebApi.Controllers
                     mimeMessage.Subject = lastAnnouncement.Title;
 
                     var bodyBuilder = new BodyBuilder();
-                    bodyBuilder.TextBody = lastAnnouncement.Description;
+                    bodyBuilder.TextBody = lastAnnouncement.Summary + "\n" + lastAnnouncement.Description;
                     mimeMessage.Body = bodyBuilder.ToMessageBody();
 
                     try

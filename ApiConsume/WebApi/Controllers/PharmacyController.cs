@@ -83,6 +83,13 @@ namespace WebApi.Controllers
             return Ok(matchingPharmacies);
         }
 
+        [HttpGet("GetTopCitiesWithMostPharmacies")]
+        public IActionResult GetTopCitiesWithMostPharmacies()
+        {
+            var pharmacies=_pharmacyService.TGetGetTopCitiesWithMostPharmacies();
+            return Ok(pharmacies);
+        }
+
         [HttpGet("GetCitiesandDistricts")]
         public IActionResult GetCitiesandDistricts()
         {

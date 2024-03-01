@@ -59,13 +59,10 @@ namespace WebUI.Areas.Admin.Controllers
                 HttpResponseMessage response = await client.PostAsync("api/Subscribe/SendMail", null);
                 if (response.IsSuccessStatusCode)
                 {
-                    // Eğer istek başarılıysa, işlem başarılı olarak kabul edilir.
                     return RedirectToAction("Index");
                 }
                 else
                 {
-                    // Başarısızsa, isteğin başarısız olduğunu işaretlemek için bir şeyler yapabilirsiniz.
-                    // Örneğin, bir hata mesajı dönebilir veya hata sayfasına yönlendirebilirsiniz.
                     return RedirectToAction("Error");
                 }
             }

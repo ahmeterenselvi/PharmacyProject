@@ -11,5 +11,6 @@ namespace EntityLayer.Concrete
         public int DailyQuoteId { get; set; }
         public string DailyQuoteSource { get; set; }
         public string Quote { get; set; }
+        public DateTime Date { get; set; }=DateTime.Now;
     }
 }

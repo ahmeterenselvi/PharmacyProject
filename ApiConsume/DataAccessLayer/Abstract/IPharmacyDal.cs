@@ -1,4 +1,5 @@
-﻿using EntityLayer.Concrete;
+﻿using DtoLayer.PharmacyDto;
+using EntityLayer.Concrete;
 using EntityLayer.RequestFeatures;
 using System;
 using System.Collections.Generic;
@@ -13,5 +14,7 @@ namespace DataAccessLayer.Abstract
         IQueryable<Pharmacy> GetAllPharmaciesQueryable();
 
         PagedList<Pharmacy> GetPaginatedPharmacies(PharmacyParameters pharmacyParameters);
+
+        List<CityPharmacyCountDto> GetTopCitiesWithMostPharmacies();
     }
 }

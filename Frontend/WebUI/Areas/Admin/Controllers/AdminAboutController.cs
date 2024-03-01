@@ -22,7 +22,7 @@ namespace WebUI.Areas.Admin.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<IEnumerable<AboutResultDto>>(jsonData);
+                var values = JsonConvert.DeserializeObject<AboutResultDto>(jsonData);
                 return View(values);
             }
             return View();

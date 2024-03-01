@@ -21,16 +21,9 @@ namespace WebApi.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllAbouts()
+        public IActionResult GetAbout()
         {
-            var aboutList = _aboutService.TGetAll();
-            return Ok(aboutList);
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult GetOneAboutById([FromRoute(Name = "id")] int id)
-        {
-            var about = _aboutService.TGetById(id);
+            var about= _aboutService.TGetAbout();
             return Ok(about);
         }
 
@@ -55,14 +48,6 @@ namespace WebApi.Controllers
             _aboutService.TUpdate(aboutToUpdate);
 
             return Ok("About updated successfully");
-        }
-
-        [HttpDelete("{id}")]
-        public IActionResult DeleteOneAboutById(int id)
-        {
-            var value = _aboutService.TGetById(id);
-            _aboutService.TDelete(value);
-            return NoContent();
         }
     }
 }

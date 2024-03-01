@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
+using DtoLayer.PharmacyDto;
 using EntityLayer.Concrete;
 using EntityLayer.RequestFeatures;
 using System;
@@ -59,6 +60,11 @@ namespace BusinessLayer.Concrete
         public int TCount()
         {
             return _pharmacyDal.Count();
+        }
+
+        public List<CityPharmacyCountDto> TGetGetTopCitiesWithMostPharmacies()
+        {
+            return _pharmacyDal.GetTopCitiesWithMostPharmacies();
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model List<AboutResultDto>
+﻿@model AboutResultDto
 
 @{
     ViewData["Title"] = "Index";
@@ -16,16 +16,13 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var about in Model)
-        {
-            <tr>
-                <th scope="row">@about.AboutId</th>
-                <td>@about.Title</td>
-                <td>@about.Description</td>
-                <td>@about.Image</td>
-                <td class="text-center"><a href="~/Admin/AdminAbout/UpdateAbout/@about.AboutId" class="btn btn-warning">Güncelle</a></td>
-            </tr>
-        }
+        <tr>
+            <th scope="row">@Model.AboutId</th>
+            <td>@Model.Title</td>
+            <td>@Model.Description</td>
+            <td>@Model.Image</td>
+            <td class="text-center"><a href="~/Admin/AdminAbout/UpdateAbout/@Model.AboutId" class="btn btn-warning">Güncelle</a></td>
+        </tr>
     </tbody>
 </table>
 

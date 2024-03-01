@@ -40,7 +40,13 @@ namespace BusinessLayer.Concrete
 
         public Subscribe TInsert(Subscribe t)
         {
-            return _subscribeDal.Insert(t);
+            var existingSubscribe = _subscribeDal.CheckEmailExistence(t.Mail);
+            if (existingSubscribe == null)
+            {
+                return _subscribeDal.Insert(t);
+            }
+            return existingSubscribe;
+
         }
 
         public void TUpdate(Subscribe t)

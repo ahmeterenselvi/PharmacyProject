@@ -2,6 +2,7 @@ using DataAccessLayer.Concrete;
 using EntityLayer.Concrete;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using WebUI.Extensions;
 
@@ -12,7 +13,11 @@ builder.Services.RegisterSqlContext(builder.Configuration);
 builder.Services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<RepositoryContext>();
 builder.Services.AddHttpClient();
 builder.Services.ConfigureValidator();
-builder.Services.AddControllersWithViews().AddFluentValidation();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+})
+    .AddFluentValidation();
 builder.Services.AddMvc(config =>
 {
     var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();

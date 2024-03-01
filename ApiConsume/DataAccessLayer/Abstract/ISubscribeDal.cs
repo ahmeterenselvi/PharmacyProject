@@ -9,5 +9,6 @@ namespace DataAccessLayer.Abstract
 {
     public interface ISubscribeDal : IGenericDal<Subscribe>
     {
+        Subscribe CheckEmailExistence(string mail);
     }
 }

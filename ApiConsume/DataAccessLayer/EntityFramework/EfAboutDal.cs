@@ -16,5 +16,10 @@ namespace DataAccessLayer.EntityFramework
         {
             
         }
+
+        public About GetAbout()
+        {
+            return GetAll().FirstOrDefault();
+        }
     }
 }

@@ -1,0 +1,129 @@
+﻿@model (IEnumerable<FeedbackResultDto>, IEnumerable<AnnouncementResultDto>)
+
+<style>
+
+    .header-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+</style>
+
+<div class="header">
+    <div class="header-content clearfix">
+
+        <div class="nav-control">
+            <div class="hamburger">
+                <span class="toggle-icon"><i class="icon-menu"></i></span>
+            </div>
+        </div>
+        <div class="header-left">
+            <div class="input-group icons">
+                <div class="input-group-prepend">
+                    <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i class="mdi mdi-magnify"></i></span>
+                </div>
+                <input type="search" class="form-control" placeholder="Site İçi Ara" aria-label="Search Dashboard">
+                <div class="drop-down   d-md-none">
+                    <form action="#">
+                        <input type="text" class="form-control" placeholder="Aranacak Kelimeyi Giriniz...">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="header-center">
+            <a href="/">Siteye Giriş</a>
+        </div>
+        <div class="header-right">
+            <ul class="clearfix">
+                <li class="icons dropdown">
+                    <a href="javascript:void(0)" data-toggle="dropdown">
+                        <i class="mdi mdi-email-outline"></i>
+                    </a>
+                    <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
+                        <div class="dropdown-content-heading d-flex justify-content-between">
+                            <span class="">Son Geri Dönüşler</span>
+                        </div>
+                        <div class="dropdown-content-body">
+                            <ul>
+                                @foreach (var feedback in Model.Item1.OrderByDescending(d=>d.Date).Take(4))
+                                {
+                                    var timeDifference = DateTime.Now - feedback.Date;
+                                    var daysAgo = (int)timeDifference.TotalDays;
+                                    <li>
+                                        <a href="~/Admin/AdminFeedback/FeedbackDetails/@feedback.FeedbackId">
+                                            <img class="float-left mr-3 avatar-img" src="~/adminweb/images/avatar/4.jpg" alt="">
+                                            <div class="notification-content">
+                                                <div class="notification-heading">@feedback.SenderName</div>
+                                                <div class="notification-timestamp">@daysAgo gün önce</div>
+                                                <div class="notification-text">@feedback.Topic</div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                }
+                                <a href="~/Admin/AdminFeedback/Index">Tümünü Gör</a>
+                            </ul>
+
+                        </div>
+                    </div>
+                </li>
+                <li class="icons dropdown">
+                    <a href="javascript:void(0)" data-toggle="dropdown">
+                        <i class="mdi mdi-bell-outline"></i>
+                    </a>
+                    <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
+                        <div class="dropdown-content-heading d-flex justify-content-between">
+                            <span class="">Son Duyurular</span>
+
+                        </div>
+                        <div class="dropdown-content-body">
+                            <ul>
+                                @foreach (var announcement in Model.Item2.OrderByDescending(d => d.Date).Take(4))
+                                {
+                                    var timeDifference = DateTime.Now - announcement.Date;
+                                    var daysAgo = (int)timeDifference.TotalDays;
+                                   <li>
+                                        <a href="~/Admin/AdminAnnouncement/AnnouncementDetails/@announcement.AnnouncementId">
+                                            <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="fas fa-bullhorn menu-icon"></i></span>
+                                        <div class="notification-content">
+                                            <h6 class="notification-heading">@announcement.Title</h6>
+                                                <span class="notification-text">@daysAgo gün önce</span>
+                                        </div>
+                                    </a>
+                                </li> 
+                                }
+                                <a href="~/Admin/AdminAnnouncement/Index">Tümünü Gör</a>
+                            </ul>
+
+                        </div>
+                    </div>
+                </li>
+                <li class="icons dropdown">
+                    <div class="user-img c-pointer position-relative" data-toggle="dropdown">
+                        <span class="activity active"></span>
+                        <img src="~/adminweb/images/user/1.png" height="40" width="40" alt="">
+                    </div>
+                    <div class="drop-down dropdown-profile   dropdown-menu">
+                        <div class="dropdown-content-body">
+                            <ul>
+                                <li>
+                                    <a href="/Settings/Index/"><i class="icon-user"></i> <span>Profil</span></a>
+                                </li>
+                                <li>
+                                    <a href="/Admin/AdminFeedback/Index/"><i class="icon-envelope-open"></i> <span>Gelen Kutusu</span> <div class="badge gradient-3 badge-pill badge-primary">3</div></a>
+                                </li>
+
+                                <hr class="my-2">
+                                <li>
+                                    <a href="/Admin/AdminDashboard/Index"><i class="icon-lock"></i> <span>Ana Sayfa</span></a>
+                                </li>
+                                <li><a href="/Admin/AdminLogin/LogOut"><i class="icon-key"></i> <span>Çıkış Yap</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

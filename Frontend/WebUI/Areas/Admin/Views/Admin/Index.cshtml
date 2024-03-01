@@ -9,7 +9,7 @@
     @await Html.PartialAsync("~/Areas/admin/Views/Admin/_PreloaderPartial.cshtml")
     <div id="main-wrapper">
         @await Html.PartialAsync("~/Areas/admin/Views/Admin/_NavheaderPartial.cshtml")
-        @await Html.PartialAsync("~/Areas/admin/Views/Admin/_HeaderPartial.cshtml")
+        @await Component.InvokeAsync("HeaderComponent")
         @await Html.PartialAsync("~/Areas/admin/Views/Admin/_SidebarPartial.cshtml")
         <div class="content-body">
 
