@@ -6,90 +6,81 @@
 }
 
 <style>
-    /* FontAwesome */
-    .fa-sort {
-        margin-left: 5px;
+    .container {
+        display: flex;
+        flex-direction: column;
     }
 
-    /* Hover Effects */
-    tbody tr:hover {
-        background-color: #f5f5f5;
-        transition: background-color 0.3s ease;
-    }
-
-    /* Updated Styles */
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    th, td {
-        border: 1px solid #ccc;
-        padding: 12px;
-        text-align: center;
-        font-size: 14px;
-    }
-
-    th {
-        background-color: #f2f2f2;
-        position: sticky;
-        top: 0;
-        z-index: 1;
-        font-weight: bold;
-    }
-
-    td {
-        background-color: #ffffff;
-    }
-
-    /* Colorful Theme */
-    tbody tr:nth-child(even) {
-        background-color: #f9f9f9;
-    }
-
-    /* FontAwesome Icon Colors */
-    .fa-sort {
-        color: #888888;
-        transition: color 0.3s ease;
-    }
-
-    /* Hover Effect for Sorting Icons */
-    th a:hover .fa-sort {
-        color: #3366cc;
+    .viewcomponenti {
+        flex: 1;
+        overflow: auto;
     }
 </style>
 
-<table class="table table-hover table-bordered">
-    <thead>
-        <tr>
-            <th scope="col"><a href="#" id="sortByName">Eczane İsmi<i class="fa fa-sort"></i></a></th>
-            <th scope="col"><a href="#" id="sortByCity">Şehir<i class="fa fa-sort"></i></a></th>
-            <th scope="col"><a href="#" id="sortByDistrict">İlçe<i class="fa fa-sort"></i></a></th>
-            <th scope="col"><a href="#" id="sortByNumber">Numara<i class="fa fa-sort"></i></a></th>
-            <th scope="col"><a href="#" id="sortByAddress">Adres<i class="fa fa-sort"></i></a></th>
-            <th scope="col"><a href="#" id="sortByRate">Puan<i class="fa fa-sort"></i></a></th>
-            <th scope="col"><a href="#" id="sortByOnDuty">Nöbetçi Mi?<i class="fa fa-sort"></i></a></th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model != null)
-        {
-            @foreach (var pharmacy in Model)
-            {
+<div class="container">
+    <div class="viewcomponenti">
+        <table class="table table-hover table-bordered table-striped">
+            <thead>
                 <tr>
-                    <td>@pharmacy.Name</td>
-                    <td>@pharmacy.City</td>
-                    <td>@pharmacy.District</td>
-                    <td>@pharmacy.Number</td>
-                    <td>@pharmacy.Address</td>
-                    <td>@pharmacy.Rate</td>
-                    <td>@(pharmacy.IsOnDuty ? "Evet" : "Hayır")</td>
+                    <th scope="col">
+                        <a href="#" id="sortByName" class="sort-link">
+                            Eczane İsmi
+                            <i class="fa fa-sort"></i>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="#" id="sortByCity" class="sort-link">
+                            Şehir
+                            <i class="fa fa-sort"></i>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="#" id="sortByDistrict" class="sort-link">
+                            İlçe
+                            <i class="fa fa-sort"></i>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="#" id="sortByNumber" class="sort-link">
+                            Numara
+                            <i class="fa fa-sort"></i>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="#" id="sortByAddress" class="sort-link">
+                            Adres
+                            <i class="fa fa-sort"></i>
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="#" id="sortByRate" class="sort-link">
+                            Puan
+                            <i class="fa fa-sort"></i>
+                        </a>
+                    </th>
                 </tr>
-            }
-        }
-    </tbody>
-</table>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    @foreach (var pharmacy in Model)
+                    {
+                        <tr class="@(pharmacy.Rate >= 4 ? "table-success" : (pharmacy.Rate >= 2 ? "table-warning" : "table-danger"))">
+                            <td>@pharmacy.Name</td>
+                            <td>@pharmacy.City</td>
+                            <td>@pharmacy.District</td>
+                            <td>
+                                @pharmacy.Number <i class="fa fa-phone"></i>
+                            </td>
+                            <td>
+                                @pharmacy.Address <i class="fa fa-map-marker"></i>
+                            </td>
+                            <td class="text-center">@pharmacy.Rate</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+}

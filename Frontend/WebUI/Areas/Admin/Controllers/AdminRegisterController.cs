@@ -33,7 +33,8 @@ namespace WebUI.Areas.Admin.Controllers
                 Name = userDto.Name,
                 Surname = userDto.Surname,
                 Email = userDto.Mail,
-                UserName = userDto.UserName,
+                UserName = userDto.Username,
+                TurkishIdentityNumber=userDto.TurkishIdentityNumber
             };
 
             var result = await _userManager.CreateAsync(appUser, userDto.Password);

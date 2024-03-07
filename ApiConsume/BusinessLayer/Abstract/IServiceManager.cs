@@ -15,5 +15,6 @@ namespace BusinessLayer.Abstract
         IDailyQuoteService DailyQuoteService { get; }
         ISubscribeService SubscribeService { get; }
         IFeedbackService FeedbackService { get; }
+        IPharmacyFeedbackService PharmacyFeedbackService { get; }
     }
 }

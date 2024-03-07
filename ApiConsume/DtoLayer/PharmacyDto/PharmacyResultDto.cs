@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntityLayer.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,5 +20,6 @@ namespace DtoLayer.PharmacyDto
         public string Longitude { get; init; }
         public bool IsOnDuty { get; init; }
         public double Rate { get; init; }
+        public List<PharmacyFeedback> Feedbacks { get; set; }
     }
 }

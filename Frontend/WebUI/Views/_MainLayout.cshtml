@@ -11,10 +11,10 @@
 
     <div class="hero_area">
         <header class="header_section">
-            @await Html.PartialAsync("~/Views/Default/_TopHeaderPartial.cshtml")
+            @* @await Html.PartialAsync("~/Views/Default/_TopHeaderPartial.cshtml") *@
             @await Html.PartialAsync("~/Views/Default/_NavbarPartial.cshtml")
         </header>
-        @await RenderSectionAsync("AnnouncementsListComponent",false)
+        @await RenderSectionAsync("AnnouncementsListComponent", false)
     </div>
 
     @RenderBody()

@@ -1,0 +1,139 @@
+﻿@model ResultUserDto
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/Admin/Index.cshtml";
+}
+
+<style>
+    .profile-card {
+        background-color: #f8f9fa;
+        border: 2px solid #dee2e6;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+    }
+
+    .profile-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 30px;
+    }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .profile-info {
+        flex: 1;
+    }
+
+    .profile-name {
+        font-size: 2.5rem;
+        color: #343a40;
+        margin-bottom: 10px;
+    }
+
+    .profile-location {
+        font-size: 1.2rem;
+        color: #6c757d;
+        margin-bottom: 0;
+    }
+
+    .section-header {
+        font-size: 1.8rem;
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    .section-content {
+        font-size: 1.2rem;
+        color: #343a40;
+        margin-bottom: 30px;
+    }
+
+    .contact-list {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .contact-item {
+        margin-bottom: 15px;
+    }
+
+    .contact-label {
+        font-weight: bold;
+        color: #343a40;
+        margin-right: 5px;
+    }
+
+    .contact-info {
+        font-size: 1.2rem;
+        color: #6c757d;
+    }
+
+    .update-text {
+        margin-bottom: 20px;
+        color: #6c757d;
+    }
+
+    .update-button {
+        text-align: center;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+</style>
+
+<div class="profile-card">
+    <div class="profile-header">
+        <div class="profile-avatar">
+            <img src="@Model.ImageUrl" alt="Avatar">
+        </div>
+        <div class="profile-info">
+            <h1 class="profile-name">@Model.Name @Model.Surname</h1>
+            <p class="profile-location">@Model.City, @Model.District</p>
+        </div>
+    </div>
+
+    <div class="profile-about">
+        <h2 class="section-header">Hakkında</h2>
+        <p class="section-content"><span class="contact-label">Kullanıcı Adı:</span> @Model.Username</p>
+        <p class="section-content"><span class="contact-label">TC Kimlik Numarası:</span> @Model.TurkishIdentityNumber</p>
+        <p class="section-content"><span class="contact-label">Şehir:</span> @Model.City</p>
+        <p class="section-content"><span class="contact-label">İlçe:</span> @Model.District</p>
+    </div>
+
+    <div class="profile-contact">
+        <h2 class="section-header">İletişim Bilgileri</h2>
+        <ul class="contact-list">
+            <li class="contact-item"><span class="contact-label">Telefon Numarası:</span> <span class="contact-info">@Model.PhoneNumber</span></li>
+            <li class="contact-item"><span class="contact-label">Email:</span> <span class="contact-info">@Model.Mail</span></li>
+        </ul>
+    </div>
+
+    <div class="profile-update">
+        <p class="update-text">Profilinizi güncellemek için aşağıdaki bağlantıya tıklayabilirsiniz:</p>
+        <div class="update-button">
+            <a href="~/Admin/AdminProfile/UpdateProfile/" class="btn btn-primary">Profil Güncelle</a>
+        </div>
+    </div>
+</div>

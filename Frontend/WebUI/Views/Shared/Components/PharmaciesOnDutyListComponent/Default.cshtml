@@ -1,48 +1,118 @@
-﻿@model IEnumerable<CitiesandDistrictsResultDto>
+﻿@model CitiesandDistrictsResultDto
 
-<form>
-    <label for="city">Şehir:</label>
-    <select id="city" name="city" onchange="getDistricts()">
-        <option value="">Şehir seçin</option>
-        @foreach (var city in Model)
-        {
-            <option value="@city.City">@city.City</option>
-        }
-    </select>
-
-    <label for="district">İlçe:</label>
-    <select id="district" name="district">
-        <option value="">İlçe seçin</option>
-    </select>
-</form>
+<section class="book_section layout_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form method="post" asp-action="Index" asp-controller="Pharmacy" class="pharmacy_form">
+                    <h4 class="pharmacy-title">NÖBETÇİ <span>ECZANELER</span></h4>
+                    <div class="form-row">
+                        <div class="form-group col-lg-4">
+                            <label for="inputCity" class="form-label">Şehir</label>
+                            <select id="city" asp-for="City" onchange="updateDistricts()" class="form-control city-select">
+                                <option value="City">Şehir seçin</option>
+                                @foreach (var city in ViewBag.Cities ?? new List<string>())
+                                {
+                                    <option value="@city">@city</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-4">
+                            <label for="inputDistrict" class="form-label">İlçe</label>
+                            <select id="district" asp-for="District" class="form-control district-select">
+                                <option value="District">İlçe seçin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="btn-box">
+                        <button type="submit" class="btn btn-primary search-btn">Ara</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 <script>
-    function getDistricts() {
-        var selectedCity = document.getElementById('city').value;
-        var citiesAndDistricts = @Html.Raw(Json.Serialize(ViewBag.CitiesAndDistricts));
-        var districts = findDistricts(selectedCity, citiesAndDistricts);
+    function updateDistricts() {
+        const selectedCity = document.getElementById("city").value;
+        const districtsByCity = @Html.Raw(Json.Serialize(ViewBag.DistrictsByCity));
+        const districtDropdown = document.getElementById("district");
 
-        populateDistrictDropdown(districts);
-    }
+        districtDropdown.innerHTML = "";
 
-    function findDistricts(selectedCity, citiesAndDistricts) {
-        for (var i = 0; i < citiesAndDistricts.length; i++) {
-            if (citiesAndDistricts[i].City === selectedCity) {
-                return citiesAndDistricts[i].Districts;
-            }
+        if (selectedCity && districtsByCity[selectedCity]) {
+            districtsByCity[selectedCity].forEach(district => {
+                const option = document.createElement("option");
+                option.value = district;
+                option.text = district;
+                districtDropdown.appendChild(option);
+            });
         }
-        return [];
-    }
-
-    function populateDistrictDropdown(districts) {
-        var districtDropdown = document.getElementById('district');
-        districtDropdown.innerHTML = '<option value="">İlçe seçin</option>';
-
-        districts.forEach(function (district) {
-            var option = document.createElement('option');
-            option.value = district;
-            option.text = district;
-            districtDropdown.appendChild(option);
-        });
     }
 </script>
+
+<style>
+    .book_section {
+        background-color: #f5f5f5;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .pharmacy_form {
+        background-color: #fff;
+        border: none;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .pharmacy-title {
+        font-family: 'Poppins', sans-serif;
+        color: #388E3C;
+        font-size: 20px;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+        .pharmacy-title:hover {
+            color: #4CAF50;
+        }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    .form-label {
+        color: #0000;
+    }
+
+    .form-control {
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 5px 10px;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+
+        .form-control:hover {
+            border-color: #888;
+        }
+
+    .search-btn {
+        background-image: linear-gradient(to right, #00c6a9, #00c6a9);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        background-size: 200% 100%;
+        transition: all 0.3s ease;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: 600;
+        width: 100%;
+    }
+
+        .search-btn:hover {
+            background-position: right center;
+        }
+</style>

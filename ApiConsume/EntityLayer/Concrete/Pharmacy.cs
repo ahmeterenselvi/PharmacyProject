@@ -19,5 +19,6 @@ namespace EntityLayer.Concrete
         public string Longitude { get; set; }
         public bool IsOnDuty { get; set; }
         public double Rate { get; set; }
+        public List<PharmacyFeedback> Feedbacks { get; set; }
     }
 }

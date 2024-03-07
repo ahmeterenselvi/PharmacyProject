@@ -17,13 +17,14 @@ namespace WebApi.Extensions
 
         public static void AddScopedEfDals(this IServiceCollection services)
         {
-            services.AddScoped<IAboutDal,EfAboutDal>();
-            services.AddScoped<IAnnouncementDal,EfAnnouncementDal>();
-            services.AddScoped<IPharmacyDal,EfPharmacyDal>();
-            services.AddScoped<IDrugTipDal,EfDrugTipDal>();
-            services.AddScoped<IDailyQuoteDal,EfDailyQuoteDal>();
-            services.AddScoped<ISubscribeDal,EfSubscribeDal>();
-            services.AddScoped<IFeedbackDal,EfFeedbackDal>();
+            services.AddScoped<IAboutDal, EfAboutDal>();
+            services.AddScoped<IAnnouncementDal, EfAnnouncementDal>();
+            services.AddScoped<IPharmacyDal, EfPharmacyDal>();
+            services.AddScoped<IDrugTipDal, EfDrugTipDal>();
+            services.AddScoped<IDailyQuoteDal, EfDailyQuoteDal>();
+            services.AddScoped<ISubscribeDal, EfSubscribeDal>();
+            services.AddScoped<IFeedbackDal, EfFeedbackDal>();
+            services.AddScoped<IPharmacyFeedbackDal, EfPharmacyFeedbackDal>();
         }
 
         public static void RegisterManagers(this IServiceCollection services)
@@ -35,6 +36,7 @@ namespace WebApi.Extensions
             services.AddScoped<IDailyQuoteService, DailyQuoteManager>();
             services.AddScoped<ISubscribeService, SubscribeManager>();
             services.AddScoped<IFeedbackService, FeedbackManager>();
+            services.AddScoped<IPharmacyFeedbackService, PharmacyFeedbackManager>();
         }
 
         public static void AddApiCors(this IServiceCollection services)

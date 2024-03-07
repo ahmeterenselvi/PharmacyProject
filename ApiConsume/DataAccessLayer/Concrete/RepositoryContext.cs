@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Concrete
 {
-    public class RepositoryContext: IdentityDbContext<AppUser, AppRole, int>
+    public class RepositoryContext : IdentityDbContext<AppUser, AppRole, int>
     {
         public RepositoryContext(DbContextOptions<RepositoryContext> options) : base(options)
         {
@@ -23,5 +23,6 @@ namespace DataAccessLayer.Concrete
         public DbSet<DailyQuote> DailyQuotes { get; set; }
         public DbSet<Subscribe> Subscribes { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<PharmacyFeedback> PharmacyFeedbacks { get; set; }
     }
 }

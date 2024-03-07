@@ -17,6 +17,7 @@
             <th scope="col"><a href="#" id="sortByRate">Puan<i class="fa fa-sort"></i></a></th>
             <th scope="col"><a href="#" id="sortByOnDuty">Nöbetçi Mi?<i class="fa fa-sort"></i></a></th>
             <th scope="col">Detaylar</th>
+            <th scope="col">Geri Dönüşler</th>
             <th scope="col">Güncelle</th>
             <th scope="col">Sil</th>
         </tr>
@@ -29,11 +30,14 @@
                 <td>@pharmacy.Name</td>
                 <td>@pharmacy.City</td>
                 <td>@pharmacy.District</td>
-                <td>@pharmacy.Number</td>
-                <td>@pharmacy.Address</td>
+                <td>@pharmacy.Number <i class="fa fa-phone"></i></td>
+                <td>@pharmacy.Address <i class="fa fa-map-marker"></i></td>
                 <td>@pharmacy.Rate</td>
                 <td>@(pharmacy.IsOnDuty ? "Evet" : "Hayır")</td>
                 <td class="text-center"><a href="~/Admin/AdminPharmacy/PharmacyDetails/@pharmacy.PharmacyId" class="btn btn-primary">Detaylar</a></td>
+                <td class="text-center">
+                    <a href="@Url.Action("PharmacyFeedbacks", "AdminPharmacy", new { pharmacyId = pharmacy.PharmacyId })" class="btn btn-success">Geri Dönüşler</a>
+                </td>
                 <td class="text-center"><a href="~/Admin/AdminPharmacy/UpdatePharmacy/@pharmacy.PharmacyId" class="btn btn-warning">Güncelle</a></td>
                 <td class="text-center">
                     <form action="~/Admin/AdminPharmacy/DeletePharmacy/@pharmacy.PharmacyId" method="post">

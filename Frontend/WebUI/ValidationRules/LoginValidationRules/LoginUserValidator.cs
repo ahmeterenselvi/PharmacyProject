@@ -7,7 +7,7 @@ namespace WebUI.ValidationRules.LoginValidationRules
     {
         public LoginUserValidator()
         {
-            RuleFor(x => x.UserName)
+            RuleFor(x => x.Username)
                 .NotEmpty().WithMessage("Kullanıcı Adı Giriniz.")
                 .Length(3, 255).WithMessage("Kullanıcı adı 3 ile 255 karakter arasında olmalıdır.");
 

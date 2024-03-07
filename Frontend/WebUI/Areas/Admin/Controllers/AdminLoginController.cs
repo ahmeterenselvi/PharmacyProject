@@ -28,7 +28,7 @@ namespace WebUI.Areas.Admin.Controllers
                 return View(dto);
             }
 
-            var result = await _manager.PasswordSignInAsync(dto.UserName, dto.Password, false, false);
+            var result = await _manager.PasswordSignInAsync(dto.Username, dto.Password, false, false);
 
             if (result.Succeeded)
             {

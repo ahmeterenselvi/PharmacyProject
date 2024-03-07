@@ -19,12 +19,10 @@ namespace WebUI.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(CitiesandDistrictsResultDto resultDto)
         {
             var client = _httpClientFactory.CreateClient();
-            var city = TempData["City"];
-            var district = TempData["District"];
-            var responseMessage = await client.GetAsync($"https://localhost:7208/api/Pharmacy/OnDuty?city={city}&district={district}");
+            var responseMessage = await client.GetAsync($"https://localhost:7208/api/Pharmacy/OnDuty?city={resultDto.City}&district={resultDto.District}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();

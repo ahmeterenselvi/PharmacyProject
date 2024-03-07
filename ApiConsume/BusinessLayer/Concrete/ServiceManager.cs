@@ -14,5 +14,6 @@ namespace BusinessLayer.Concrete
     IDrugTipService DrugTipService,
     IDailyQuoteService DailyQuoteService,
     ISubscribeService SubscribeService,
-    IFeedbackService FeedbackService) : IServiceManager;
+    IFeedbackService FeedbackService,
+    IPharmacyFeedbackService PharmacyFeedbackService) : IServiceManager;
 }

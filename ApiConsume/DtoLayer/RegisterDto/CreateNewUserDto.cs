@@ -19,11 +19,14 @@ namespace DtoLayer.RegisterDto
 
         [Required(ErrorMessage = "Bir kullanıcı adı giriniz.")]
         [MinLength(3), MaxLength(255)]
-        public string UserName { get; init; }
+        public string Username { get; init; }
 
         [Required(ErrorMessage = "Bir mail adresi giriniz.")]
         [EmailAddress]
         public string Mail { get; init; }
+
+        [RegularExpression(@"^\d{11}$", ErrorMessage = "Geçerli bir Türkiye kimlik numarası giriniz.")]
+        public string TurkishIdentityNumber { get; init; }
 
         [Required(ErrorMessage = "Bir şifre giriniz.")]
         [MinLength(8), MaxLength(255)]

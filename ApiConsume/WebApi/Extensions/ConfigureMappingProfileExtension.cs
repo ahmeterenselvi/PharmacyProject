@@ -54,6 +54,8 @@ namespace WebApi.Extensions
 
             CreateMap<CreateFeedbackDto, Feedback>().ReverseMap();
 
+            CreateMap<CreatePharmacyFeedbackDto, PharmacyFeedback>().ReverseMap();
+
             CreateMap<CreateNewUserDto, AppUser>().ReverseMap();
             CreateMap<LoginUserDto, AppUser>().ReverseMap();
         }

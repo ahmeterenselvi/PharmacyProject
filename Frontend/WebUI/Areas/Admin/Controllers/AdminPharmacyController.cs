@@ -115,5 +115,21 @@ namespace WebUI.Areas.Admin.Controllers
             }
             return 0;
         }
+
+        [HttpGet]
+        public async Task<IActionResult> PharmacyFeedbacks(int pharmacyId)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"https://localhost:7208/api/PharmacyFeedback/{pharmacyId}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<PharmacyFeedbackResultDto>>(jsonData);
+                if(values.Any())
+                    return View(values);
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
     }
 }

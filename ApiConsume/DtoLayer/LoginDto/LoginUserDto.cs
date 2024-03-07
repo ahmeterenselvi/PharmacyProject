@@ -12,7 +12,7 @@ namespace DtoLayer.LoginDto
     {
         [Required(ErrorMessage = "Kullanıcı Adı Giriniz.")]
         [MinLength(3), MaxLength(255)]
-        public string UserName { get; init; }
+        public string Username { get; init; }
 
         [Required(ErrorMessage = "Şifre giriniz.")]
         [PasswordPropertyText]
