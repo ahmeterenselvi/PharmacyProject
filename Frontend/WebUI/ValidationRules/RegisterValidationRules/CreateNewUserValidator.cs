@@ -41,7 +41,22 @@ namespace WebUI.ValidationRules.RegisterValidationRules
         private bool BeAValidTurkishIdentityNumber(string identityNumber)
         {
             Regex regex = new Regex(@"^\d{11}$");
-            return regex.IsMatch(identityNumber);
+            if (!regex.IsMatch(identityNumber))
+            {
+                return false;
+            }
+
+            int[] digits = identityNumber.Select(c => int.Parse(c.ToString())).ToArray();
+
+            int sum = digits.Take(10).Sum();
+            int tenthDigit = sum % 10;
+
+            if (tenthDigit != digits[10])
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

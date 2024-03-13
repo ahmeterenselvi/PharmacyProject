@@ -1,4 +1,5 @@
 ﻿using DtoLayer.FeedbackDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -28,6 +29,7 @@ namespace WebUI.Areas.Admin.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteFeedback(int id)
         {
             var client = _httpClientFactory.CreateClient();

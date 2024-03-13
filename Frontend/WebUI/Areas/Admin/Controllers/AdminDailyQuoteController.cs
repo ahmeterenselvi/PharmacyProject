@@ -1,4 +1,5 @@
 ﻿using DtoLayer.DailyQuote;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -29,9 +30,11 @@ namespace WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddDailyQuote() => View();
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddDailyQuote(CreateDailyQuoteDto dailyQuoteDto)
         {
             var client = _httpClientFactory.CreateClient();
@@ -45,6 +48,7 @@ namespace WebUI.Areas.Admin.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteDailyQuote(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -57,6 +61,7 @@ namespace WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateDailyQuote(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -71,6 +76,7 @@ namespace WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateDailyQuote(UpdateDailyQuoteDto model)
         {
             var client = _httpClientFactory.CreateClient();

@@ -13,14 +13,14 @@ using EntityLayer.Concrete;
 
 namespace WebApi.Utilities
 {
-    public class DtoMapper:Profile
+    public class DtoMapper : Profile
     {
         public DtoMapper()
         {
-            CreateMap<CreatePharmacyDto,Pharmacy>().ReverseMap();
-            CreateMap<PharmacyResultDto,Pharmacy>().ReverseMap();
-            CreateMap<UpdatePharmacyDto,Pharmacy>().ReverseMap();
-            CreateMap<CitiesandDistrictsResultDto,Pharmacy>().ReverseMap();
+            CreateMap<CreatePharmacyDto, Pharmacy>().ReverseMap();
+            CreateMap<PharmacyResultDto, Pharmacy>().ReverseMap();
+            CreateMap<UpdatePharmacyDto, Pharmacy>().ReverseMap();
+            CreateMap<CitiesandDistrictsResultDto, Pharmacy>().ReverseMap();
             CreateMap<CitiesandDistrictsResultDto, PharmacyResultDto>().ReverseMap();
 
             CreateMap<AnnouncementResultDto, Announcement>().ReverseMap();

@@ -1,4 +1,5 @@
 ﻿using DtoLayer.SubscribeDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
@@ -6,6 +7,7 @@ using System.Net.Http.Headers;
 namespace WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminSubscribeController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;

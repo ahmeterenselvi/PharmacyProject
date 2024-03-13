@@ -6,8 +6,10 @@ using DtoLayer.DrugTipDto;
 using DtoLayer.FeedbackDto;
 using DtoLayer.LoginDto;
 using DtoLayer.PharmacyDto;
+using DtoLayer.Profile;
 using DtoLayer.RegisterDto;
 using DtoLayer.SubscribeDto;
+using EntityLayer.Concrete;
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using WebUI.ValidationRules.AboutValidationRules;
@@ -52,6 +54,17 @@ namespace WebUI.Extensions
             services.AddTransient<IValidator<UpdatePharmacyDto>, UpdatePharmacyValidator>();
 
             services.AddTransient<IValidator<CreateSubscribeDto>, CreateSubscribeValidator>();
+        }
+
+        public static void ConfigureAutoMapper(this IServiceCollection services)
+        {
+            services.AddAutoMapper(typeof(Program));
+            services.AddAutoMapper(cfg =>
+            {
+                cfg.CreateMap<AppUser, ResultUserDto>().ReverseMap();
+                cfg.CreateMap<AppUser, UpdateUserDto>().ReverseMap();
+            });
+
         }
     }
 }

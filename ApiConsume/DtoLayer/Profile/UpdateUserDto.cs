@@ -25,6 +25,10 @@ namespace DtoLayer.Profile
         [Compare("Password", ErrorMessage = "Şifreler aynı olmalı.")]
         public string ConfirmPassword { get; init; }
 
+        [Required(ErrorMessage = "Bir mail adresi giriniz.")]
+        [EmailAddress]
+        public string Email { get; init; }
+
         [RegularExpression(@"^(05\d{9})$", ErrorMessage = "Geçerli bir telefon numarası giriniz.")]
         public string PhoneNumber { get; init; }
 

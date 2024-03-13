@@ -1,5 +1,7 @@
-﻿using DtoLayer.Profile;
+﻿using AutoMapper;
+using DtoLayer.Profile;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +11,12 @@ namespace WebUI.Areas.Admin.Controllers
     public class AdminProfileController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
+        private readonly IMapper _mapper;
 
-        public AdminProfileController(UserManager<AppUser> userManager)
+        public AdminProfileController(UserManager<AppUser> userManager, IMapper mapper)
         {
             _userManager = userManager;
+            _mapper = mapper;
         }
 
         public async Task<IActionResult> Index()
@@ -23,18 +27,7 @@ namespace WebUI.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            ResultUserDto resultUserDto = new ResultUserDto()
-            {
-                Name = user.Name,
-                Surname = user.Surname,
-                Mail = user.Email,
-                City = user.City,
-                District = user.District,
-                PhoneNumber = user.PhoneNumber,
-                TurkishIdentityNumber = user.TurkishIdentityNumber,
-                Username = user.UserName,
-                ImageUrl = user.ImageUrl
-            };
+            var resultUserDto = _mapper.Map<ResultUserDto>(user);
 
             return View(resultUserDto);
         }
@@ -48,15 +41,7 @@ namespace WebUI.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            var model = new UpdateUserDto
-            {
-                Name = user.Name,
-                Surname = user.Surname,
-                City = user.City,
-                District = user.District,
-                PhoneNumber = user.PhoneNumber,
-                ImageUrl = user.ImageUrl
-            };
+            var model = _mapper.Map<UpdateUserDto>(user);
 
             return View(model);
         }
@@ -76,8 +61,8 @@ namespace WebUI.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            user.Name = updateUserDto.Name;
-            user.Surname = updateUserDto.Surname;
+            _mapper.Map(updateUserDto, user);
+
             if (!string.IsNullOrWhiteSpace(updateUserDto.Password))
             {
                 user.PasswordHash = _userManager.PasswordHasher.HashPassword(user, updateUserDto.Password);
@@ -87,7 +72,7 @@ namespace WebUI.Areas.Admin.Controllers
 
             if (result.Succeeded)
             {
-                return RedirectToAction("UpdateProfile", "AdminProfileController");
+                return RedirectToAction("Index");
             }
 
             foreach (var error in result.Errors)

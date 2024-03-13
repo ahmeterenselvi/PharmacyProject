@@ -6,6 +6,7 @@ using DtoLayer.DrugTipDto;
 using DtoLayer.FeedbackDto;
 using DtoLayer.LoginDto;
 using DtoLayer.PharmacyDto;
+using DtoLayer.Profile;
 using DtoLayer.RegisterDto;
 using DtoLayer.SubscribeDto;
 using EntityLayer.Concrete;
@@ -58,6 +59,8 @@ namespace WebApi.Extensions
 
             CreateMap<CreateNewUserDto, AppUser>().ReverseMap();
             CreateMap<LoginUserDto, AppUser>().ReverseMap();
+            CreateMap<UpdateUserDto, AppUser>().ReverseMap();
+            CreateMap<ResultUserDto, AppUser>().ReverseMap();
         }
     }
 }

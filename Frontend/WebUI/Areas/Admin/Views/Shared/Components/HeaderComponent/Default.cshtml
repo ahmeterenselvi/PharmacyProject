@@ -1,4 +1,4 @@
-﻿@model (IEnumerable<FeedbackResultDto>, IEnumerable<AnnouncementResultDto>)
+﻿@model (IEnumerable<FeedbackResultDto>, IEnumerable<AnnouncementResultDto>, string)
 
 <style>
 
@@ -47,7 +47,7 @@
                         </div>
                         <div class="dropdown-content-body">
                             <ul>
-                                @foreach (var feedback in Model.Item1.OrderByDescending(d=>d.Date).Take(4))
+                                @foreach (var feedback in Model.Item1.OrderByDescending(d => d.Date).Take(4))
                                 {
                                     var timeDifference = DateTime.Now - feedback.Date;
                                     var daysAgo = (int)timeDifference.TotalDays;
@@ -83,15 +83,15 @@
                                 {
                                     var timeDifference = DateTime.Now - announcement.Date;
                                     var daysAgo = (int)timeDifference.TotalDays;
-                                   <li>
+                                    <li>
                                         <a href="~/Admin/AdminAnnouncement/AnnouncementDetails/@announcement.AnnouncementId">
                                             <span class="mr-3 avatar-icon bg-danger-lighten-2"><i class="fas fa-bullhorn menu-icon"></i></span>
-                                        <div class="notification-content">
-                                            <h6 class="notification-heading">@announcement.Title</h6>
+                                            <div class="notification-content">
+                                                <h6 class="notification-heading">@announcement.Title</h6>
                                                 <span class="notification-text">@daysAgo gün önce</span>
-                                        </div>
-                                    </a>
-                                </li> 
+                                            </div>
+                                        </a>
+                                    </li>
                                 }
                                 <a href="~/Admin/AdminAnnouncement/Index">Tümünü Gör</a>
                             </ul>
@@ -102,13 +102,13 @@
                 <li class="icons dropdown">
                     <div class="user-img c-pointer position-relative" data-toggle="dropdown">
                         <span class="activity active"></span>
-                        <img src="~/adminweb/images/user/1.png" height="40" width="40" alt="">
+                        <img src="@Model.Item3" height="40" width="40" alt="">
                     </div>
                     <div class="drop-down dropdown-profile   dropdown-menu">
                         <div class="dropdown-content-body">
                             <ul>
                                 <li>
-                                    <a href="/Settings/Index/"><i class="icon-user"></i> <span>Profil</span></a>
+                                    <a href="/Admin/AdminProfile/Index"><i class="icon-user"></i> <span>Profil</span></a>
                                 </li>
                                 <li>
                                     <a href="/Admin/AdminFeedback/Index/"><i class="icon-envelope-open"></i> <span>Gelen Kutusu</span> <div class="badge gradient-3 badge-pill badge-primary">3</div></a>

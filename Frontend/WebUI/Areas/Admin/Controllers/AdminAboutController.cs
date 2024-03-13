@@ -1,4 +1,5 @@
 ﻿using DtoLayer.AboutDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -29,6 +30,7 @@ namespace WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateAbout(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -43,6 +45,7 @@ namespace WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateAbout(UpdateAboutDto model)
         {
             var client = _httpClientFactory.CreateClient();

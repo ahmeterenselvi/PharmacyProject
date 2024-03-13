@@ -1,4 +1,5 @@
 ﻿using DtoLayer.DrugTipDto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -29,9 +30,11 @@ namespace WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddDrugTip() => View();
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddDrugTip(CreateDrugTipDto drugTipDto)
         {
             var client = _httpClientFactory.CreateClient();
@@ -45,6 +48,7 @@ namespace WebUI.Areas.Admin.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteDrugTip(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -57,6 +61,7 @@ namespace WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateDrugTip(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -71,6 +76,7 @@ namespace WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateDrugTip(UpdateDrugTipDto model)
         {
             var client = _httpClientFactory.CreateClient();

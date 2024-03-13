@@ -26,6 +26,10 @@ namespace DtoLayer.Profile
                 .NotEmpty().WithMessage("Şifrenizi tekrar giriniz.")
                 .Equal(x => x.Password).WithMessage("Şifreler eşleşmiyor.");
 
+            RuleFor(x => x.Email)
+            .NotEmpty().WithMessage("Email alanı boş bırakılamaz.")
+            .EmailAddress().WithMessage("Geçerli bir email adresi giriniz.");
+
             RuleFor(x => x.PhoneNumber)
                 .Must(BeAValidPhoneNumber).When(x => !string.IsNullOrEmpty(x.PhoneNumber))
                 .WithMessage("Geçerli bir telefon numarası giriniz.");
@@ -43,7 +47,7 @@ namespace DtoLayer.Profile
 
         private bool BeAValidPhoneNumber(string phoneNumber)
         {
-            Regex regex = new Regex(@"^(05\d{9})$");
+            Regex regex = new Regex(@"^(05\d{9,10})$");
             return regex.IsMatch(phoneNumber);
         }
     }

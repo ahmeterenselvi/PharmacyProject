@@ -1,5 +1,6 @@
 ﻿using DtoLayer.PharmacyDto;
 using MessagePack.Formatters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -33,9 +34,11 @@ namespace WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult AddPharmacy() => View();
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddPharmacy(CreatePharmacyDto pharmacyDto)
         {
             var client = _httpClientFactory.CreateClient();
@@ -49,6 +52,7 @@ namespace WebUI.Areas.Admin.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeletePharmacy(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -61,6 +65,7 @@ namespace WebUI.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdatePharmacy(int id)
         {
             var client = _httpClientFactory.CreateClient();
@@ -75,6 +80,7 @@ namespace WebUI.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdatePharmacy(UpdatePharmacyDto model)
         {
             var client = _httpClientFactory.CreateClient();

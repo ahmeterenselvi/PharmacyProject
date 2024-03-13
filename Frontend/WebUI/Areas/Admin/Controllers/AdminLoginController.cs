@@ -21,6 +21,7 @@ namespace WebUI.Areas.Admin.Controllers
         public IActionResult Index() => View();
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(LoginUserDto dto)
         {
             if (!ModelState.IsValid)
